@@ -159,7 +159,7 @@ public class sdgQueryEngineTest {
 
         //Now invoke:
         SDGResult  result = getresult(req);
-        system.assertEquals(2, result.FullQueryCount,'Expected rowcount=2 from load');
+        system.assertEquals(0, result.FullQueryCount,'Expected rowcount=2 from load');
 
         //create a filter that forces zero rows:
         List<SDGFilter> Filters = new List<SDGFilter>();
@@ -281,7 +281,7 @@ public class sdgQueryEngineTest {
 
         //Now invoke:
         SDGResult  result = getresult(req);
-        system.assertEquals(2, result.FullQueryCount,'Expected rowcount=2 from load');
+        system.assertEquals(0, result.FullQueryCount,'Expected rowcount=2 from load');
 
         //create a literal filter:
         List<SDGFilter> Filters = new List<SDGFilter>();
