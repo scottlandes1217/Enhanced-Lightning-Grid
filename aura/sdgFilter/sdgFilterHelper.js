@@ -3,7 +3,7 @@
     getERLPicklist: function (component) {
         var action = component.get("c.getPicklistOptions");
         action.setParams({
-            "SDGFieldID": component.get("v.SDGField.Id")
+            "smdgFieldID": component.get("v.smdgField.Id")
         });
 
         //Set up the callback
@@ -18,9 +18,9 @@
         if (paramvalue == null) {
             paramvalue = '';
         }
-        var compEvent = component.getEvent("SDGFilterUpdate");
+        var compEvent = component.getEvent("smdgFilterUpdate");
         compEvent.setParams({
-            "SDGFieldID": component.get("v.SDGField").ID,
+            "smdgFieldID": component.get("v.smdgField").ID,
             "FilterOperator": paramoperator,
             "FilterValue": paramvalue
         });

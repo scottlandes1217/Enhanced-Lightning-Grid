@@ -5,7 +5,7 @@
         var action = component.get("c.GetSObjectFields");
         var sRecordId;
 
-        //only do this this way so we can use setStorable on the call - otherwise we will have a different signature each sdg
+        //only do this this way so we can use setStorable on the call - otherwise we will have a different signature each smdg
         if (objectname == null || objectname == '') {
             sRecordId = component.get("v.recordId")
         }
@@ -13,7 +13,7 @@
         action.setAbortable();
         action.setParams({
             "sObjectType": objectname,
-            "SDGRecordId": sRecordId
+            "smdgRecordId": sRecordId
         });
 
         action.setCallback(this, function (actionResult) {

@@ -1,13 +1,13 @@
 <aura:component implements="flexipage:availableForAllPageTypes,forceCommunity:availableForAllPageTypes,force:hasRecordId,force:appHostable"
-    controller="sdgController" access="global" extends="c:sdgBase">
+    controller="smdgController" access="global" extends="c:smdgBase">
 
     <aura:attribute name="recordId" type="String" access="global" />
 
-    <aura:attribute name="SDGFields" type="List" access="global" />
-    <aura:attribute name="SDG" type="object" access="global" />
-    <aura:attribute name="SDGFilters" type="List" access="global" />
-    <aura:attribute name="SDGFiltersDefinition" type="List" access="global" />
-    <aura:attribute name="SDGActions" type="List" access="global" />
+    <aura:attribute name="smdgFields" type="List" access="global" />
+    <aura:attribute name="smdg" type="object" access="global" />
+    <aura:attribute name="smdgFilters" type="List" access="global" />
+    <aura:attribute name="smdgFiltersDefinition" type="List" access="global" />
+    <aura:attribute name="smdgActions" type="List" access="global" />
     <aura:attribute name="hasListMenu" type="Boolean" default="false" access="private" />
     <aura:attribute name="hasRowMenu" type="Boolean" default="false" access="private" />
     <aura:attribute name="hasRowActions" type="Boolean" default="false" access="private" />
@@ -20,7 +20,7 @@
     <aura:attribute name="PageID" type="String" access="global" />
     <aura:attribute name="SortColumn" type="String" default="" access="global" />
     <aura:attribute name="SortOrder" type="String" default="" access="global" />
-    <aura:attribute name="ShowSDGError" type="Boolean" default="false" access="global" />
+    <aura:attribute name="ShowsmdgError" type="Boolean" default="false" access="global" />
 
     <aura:attribute name="processeddata" type="Object" access="global" />
     <aura:attribute name="ErrorMessage" type="String" access="global" />
@@ -40,22 +40,22 @@
     <aura:attribute name="summarydata" type="List" access="global" />
 
     <!--Labels-->
-    <aura:attribute name="sdgAgo" type="String" access="public" default="{!$Label.c.sdgAgo}" />
-    <aura:attribute name="sdgIn" type="String" access="public" default="{!$Label.c.sdgIn}" />
-    <aura:attribute name="sdgFiltered" type="String" access="public" default="{!$Label.c.sdgFiltered}" />
-    <aura:attribute name="sdgFilteredOf" type="String" access="public" default="{!$Label.c.sdgFilteredOf}" />
-    <aura:attribute name="sdgNoData" type="String" access="public" default="{!$Label.c.sdgNoData}" />
-    <aura:attribute name="sdgPage" type="String" access="public" default="{!$Label.c.sdgPage}" />
-    <aura:attribute name="sdgPage_Size" type="String" access="public" default="{!$Label.c.sdgPage_Size}" />
+    <aura:attribute name="smdgAgo" type="String" access="public" default="{!$Label.c.smdgAgo}" />
+    <aura:attribute name="smdgIn" type="String" access="public" default="{!$Label.c.smdgIn}" />
+    <aura:attribute name="smdgFiltered" type="String" access="public" default="{!$Label.c.smdgFiltered}" />
+    <aura:attribute name="smdgFilteredOf" type="String" access="public" default="{!$Label.c.smdgFilteredOf}" />
+    <aura:attribute name="smdgNoData" type="String" access="public" default="{!$Label.c.smdgNoData}" />
+    <aura:attribute name="smdgPage" type="String" access="public" default="{!$Label.c.smdgPage}" />
+    <aura:attribute name="smdgPage_Size" type="String" access="public" default="{!$Label.c.smdgPage_Size}" />
 
     <!-- Design Attributes-->
-    <aura:attribute name="SDGConfiguration" type="String" access="global" />
+    <aura:attribute name="smdgConfiguration" type="String" access="global" />
     <aura:attribute name="SVGName" type="String" access="global" default="standard:account" />
     <aura:attribute name="Title" type="String" access="global" />
     <aura:attribute name="UseCache" type="Boolean" default="true" access="global" />
     <aura:attribute name="RelationshipName" type="String" access="global" />
     <aura:attribute name="FieldSetName" type="String" access="global" />
-    <aura:attribute name="SDGTag" type="string" access="global" />
+    <aura:attribute name="smdgTag" type="string" access="global" />
     <aura:attribute name="DefaultPageSize" type="String" access="global" />
     <aura:attribute name="PagerSizeValue" default="{!v.DefaultPageSize}" type="String" access="global" />
 
@@ -73,15 +73,15 @@
 
     <!-- Events -->
     <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
-    <aura:handler name="SDGFilterUpdate" event="c:sdgFilterUpdate" action="{!c.filterUpdated}" />
-    <aura:handler name="SDGSortableColumnSort" event="c:sdgSortableColumnSort" action="{!c.sort}" />
-    <aura:handler event="c:evtRefreshSDG" action="{!c.reload}" />
+    <aura:handler name="smdgFilterUpdate" event="c:smdgFilterUpdate" action="{!c.filterUpdated}" />
+    <aura:handler name="smdgSortableColumnSort" event="c:smdgSortableColumnSort" action="{!c.sort}" />
+    <aura:handler event="c:evtRefreshsmdg" action="{!c.reload}" />
     <aura:handler event="force:refreshView" action="{!c.reload}" />
 
     <c:ObjectHelper aura:id="ObjectHelper" />
 
     <style>
-        .SDGhidden {
+        .smdghidden {
             display: none;
 
             visibility: hidden;
@@ -89,7 +89,7 @@
     </style>
 
     <aura:if isTrue="{!v.ShowComponent}">
-        <div class="sdgborder">
+        <div class="smdgborder">
             <lightning:card iconName="{!v.SVGName}">
                 <aura:set attribute="title">
                     <a class="slds-card__header-link baseCard__header-title-container" onclick="{!c.ShowAll}">{!v.TitleName}</a>
@@ -105,7 +105,7 @@
                         <aura:renderIf isTrue="{!v.TargetSize=='SMALL'}">
                             <lightning:buttonMenu iconName="utility:sort" onselect="{! c.handleSort}" menuAlignment="right">
 
-                                <aura:iteration items="{!v.SDG.SDGFields}" var="field">
+                                <aura:iteration items="{!v.smdg.smdgFields}" var="field">
                                     <aura:renderIf isTrue="{!field.canSort}">
                                         <lightning:menuitem value="{!field.ID + ':A'}" checked="{!v.SortColumn + ':' + v.SortOrder == field.ID + ':A'}" label="{!field.Label}"
                                             iconName="utility:arrowup" />
@@ -124,14 +124,14 @@
                         </aura:renderIf>
                         <lightning:buttonIcon iconName="utility:refresh" variant="border-filled" onclick="{! c.reload }" alternativeText="Reload"
                         />
-                        <aura:iteration items="{!v.SDGActions}" var="action">
+                        <aura:iteration items="{!v.smdgActions}" var="action">
                             <aura:if isTrue="{!action.Type=='List Multi'}">
                                 <lightning:button disabled="{!v.CheckedRowIDs.length==0}" label="{!action.Label}" iconName="{!action.Icon}" value="{!action.Id}"
                                     onclick="{! c.RaiseListMultiEventButton }" />
                             </aura:if>
                         </aura:iteration>
 
-                        <aura:iteration items="{!v.SDGActions}" var="action">
+                        <aura:iteration items="{!v.smdgActions}" var="action">
                             <aura:if isTrue="{!action.Type=='List Button'}">
                                 <lightning:button disabled="{!v.CheckedRowIDs.length>0}" label="{!action.Label}" iconName="{!action.Icon}" value="{!action.Id}"
                                     onclick="{! c.RaiseListEventButton }" />
@@ -142,7 +142,7 @@
 
                             <lightning:buttonMenu class="slds-button_last " menuAlignment="right" alternativeText="More options" onselect="{! c.RaiseListEventMenu }"
                                 variant="border-filled" iconSize="medium">
-                                <aura:iteration items="{!v.SDGActions}" var="action">
+                                <aura:iteration items="{!v.smdgActions}" var="action">
                                     <aura:if isTrue="{!action.Type=='List'}">
                                         <lightning:menuItem disabled="{!v.CheckedRowIDs.length>0}" label="{!action.Label}" iconName="{!action.Icon}" value="{!action.Id}"
                                         />
@@ -156,12 +156,12 @@
                 <aura:renderIf isTrue="{!v.ShowFilters}">
                     <div class="slds-p-bottom_small">
                         <lightning:layout multipleRows="true">
-                            <aura:iteration items="{!v.SDGFiltersDefinition}" var="field">
+                            <aura:iteration items="{!v.smdgFiltersDefinition}" var="field">
                                 <lightning:layoutItem flexibility="auto" size="{!v.filtersize}">
                                     <div class="{! 'filter ' + v.TargetSize}">
-                                        <c:sdgFilter aura:id="cmpFilter" SDGField="{!field}">
+                                        <c:smdgFilter aura:id="cmpFilter" smdgField="{!field}">
 
-                                        </c:sdgFilter>
+                                        </c:smdgFilter>
                                     </div>
                                 </lightning:layoutItem>
                             </aura:iteration>
@@ -184,7 +184,7 @@
 
                     <div aura:id="datapanel">
                         <div>
-                            <div class="sdgdatatablewrapper" aura:id="sdgdatatablewrapper">
+                            <div class="smdgdatatablewrapper" aura:id="smdgdatatablewrapper">
                                 <table aura:id="resulttable" class="{! 'slds-table slds-table_bordered slds-no-row-hover slds-table_cell-buffer ' + (v.TargetSize=='SMALL'?' narrow':'')}">
                                     <thead>
                                         <tr class="slds-text-title_caps">
@@ -193,8 +193,8 @@
                                                     <lightning:input type="checkbox" label="" name="" aura:id="checkall" onchange="{!c.CheckAll}" />
                                                 </th>
                                             </aura:if>
-                                            <aura:iteration items="{!v.SDG.SDGFields}" var="field">
-                                                <c:sdgSortableColumn SDGField="{!field}" CurrentSortedColumn="{!v.SortColumn}" CurrentSortedOrder="{!v.SortOrder}"></c:sdgSortableColumn>
+                                            <aura:iteration items="{!v.smdg.smdgFields}" var="field">
+                                                <c:smdgSortableColumn smdgField="{!field}" CurrentSortedColumn="{!v.SortColumn}" CurrentSortedOrder="{!v.SortOrder}"></c:smdgSortableColumn>
                                             </aura:iteration>
 
                                             <aura:if isTrue="{!v.hasRowActions}">
@@ -206,8 +206,8 @@
                                     <aura:if isTrue="{!v.FullQueryCount==0}">
                                         <tbody>
                                             <tr class="slds-hint-parent">
-                                                <td colspan="{!v.SDG.SDGFields.length+1}">
-                                                    <span class="slds-truncate">{!v.sdgNoData}</span>
+                                                <td colspan="{!v.smdg.smdgFields.length+1}">
+                                                    <span class="slds-truncate">{!v.smdgNoData}</span>
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -235,7 +235,7 @@
 
                                                     <aura:iteration items="{!row.data}" var="renderfield" indexVar="index">
 
-                                                        <c:sdgDatagridCell renderfield="{!renderfield}" />
+                                                        <c:smdgDatagridCell renderfield="{!renderfield}" />
 
 
                                                     </aura:iteration>
@@ -245,7 +245,7 @@
 
                                                             <lightning:buttonGroup >
 
-                                                                <aura:iteration items="{!v.SDGActions}" var="action">
+                                                                <aura:iteration items="{!v.smdgActions}" var="action">
                                                                     <aura:if isTrue="{!action.Type=='Row Button'}">
                                                                         <lightning:button label="{!action.Label}" iconName="{!action.Icon}" class="rowbutton" value="{#action.Id + ',' + row.rowID}"
                                                                             onclick="{! c.RaiseRowEventButton }" />
@@ -259,7 +259,7 @@
                                                                     <lightning:buttonMenu class="aamenurelative slds-button_last rowbutton" visible="false" menuAlignment="right" alternativeText="More options"
                                                                         onselect="{! c.RaiseRowEventMenu }" variant="border-filled"
                                                                         value="{#row.rowID}">
-                                                                        <aura:iteration items="{!v.SDGActions}" var="action">
+                                                                        <aura:iteration items="{!v.smdgActions}" var="action">
                                                                             <aura:if isTrue="{!action.Type=='Row'}">
                                                                                 <lightning:menuItem label="{!action.Label}" iconName="{!action.Icon}" value="{#action.Id + ',' + row.rowID}" />
                                                                             </aura:if>
@@ -287,7 +287,7 @@
                                                     </aura:if>
 
                                                     <aura:iteration items="{!v.summarydata}" var="summaryfield" indexVar="index">
-                                                        <c:sdgDatagridCell renderfield="{!summaryfield}" />
+                                                        <c:smdgDatagridCell renderfield="{!summaryfield}" />
                                                     </aura:iteration>
                                                 </tr>
 
@@ -304,7 +304,7 @@
                             <div class="slds-form_inline slds-p-around_xx-small">
                                 <div class=" slds-form-element">
 
-                                    <lightning:select aura:id="PagerPage" name="PagerPage" label="{!v.sdgPage}" onchange="{!c.paging}">
+                                    <lightning:select aura:id="PagerPage" name="PagerPage" label="{!v.smdgPage}" onchange="{!c.paging}">
                                         <aura:iteration items="{!v.Pages}" var="opt">
                                             <option value="{!opt.value}" label="{!opt.label}" text="{!opt.label}" />
                                         </aura:iteration>
@@ -312,7 +312,7 @@
 
                                 </div>
                                 <div class="slds-form-element">
-                                    <lightning:select aura:id="PagerSize" name="PagerSize" label="{!v.sdgPage_Size}" value="{!v.PagerSizeValue}" onchange="{!c.reload}">
+                                    <lightning:select aura:id="PagerSize" name="PagerSize" label="{!v.smdgPage_Size}" value="{!v.PagerSizeValue}" onchange="{!c.reload}">
                                         <option value="10">10</option>
                                         <option value="20">20</option>
                                         <option value="50">50</option>

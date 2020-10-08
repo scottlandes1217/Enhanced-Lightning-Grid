@@ -36,8 +36,8 @@
                 <name>RelationshipName</name>
             </componentInstanceProperties>
             <componentInstanceProperties>
-                <name>SDGConfiguration</name>
-                <value>Metadata:SDG_Designer_Fields</value>
+                <name>smdgConfiguration</name>
+                <value>Metadata:smdg_Designer_Fields</value>
             </componentInstanceProperties>
             <componentInstanceProperties>
                 <name>SVGName</name>
@@ -55,7 +55,7 @@
                 <name>UseCache</name>
                 <value>true</value>
             </componentInstanceProperties>
-            <componentName>sdg</componentName>
+            <componentName>smdg</componentName>
         </componentInstances>
         <componentInstances>
             <componentInstanceProperties>
@@ -67,8 +67,8 @@
                 <value>false</value>
             </componentInstanceProperties>
             <componentInstanceProperties>
-                <name>SDGConfiguration</name>
-                <value>Metadata:SDG_Designer_Actions</value>
+                <name>smdgConfiguration</name>
+                <value>Metadata:smdg_Designer_Actions</value>
             </componentInstanceProperties>
             <componentInstanceProperties>
                 <name>SVGName</name>
@@ -86,7 +86,7 @@
                 <name>UseCache</name>
                 <value>false</value>
             </componentInstanceProperties>
-            <componentName>sdg</componentName>
+            <componentName>smdg</componentName>
         </componentInstances>
         <name>facet-504e1c91-ec19-4210-a73e-6e11eb85c72e</name>
         <type>Facet</type>
@@ -131,7 +131,7 @@
     </flexiPageRegions>
     <flexiPageRegions>
         <componentInstances>
-            <componentName>sdgDesignerFieldFinder</componentName>
+            <componentName>smdgDesignerFieldFinder</componentName>
         </componentInstances>
         <mode>Replace</mode>
         <name>sidebar</name>
@@ -139,7 +139,7 @@
     </flexiPageRegions>
     <masterLabel>Sortable Data Grid Record Page v2</masterLabel>
     <parentFlexiPage>flexipage__default_rec_L</parentFlexiPage>
-    <sobjectType>SDG__c</sobjectType>
+    <sobjectType>smdg__c</sobjectType>
     <template>
         <name>flexipage:recordHomeTemplateDesktop</name>
     </template>

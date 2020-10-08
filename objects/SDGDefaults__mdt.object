@@ -10,7 +10,7 @@
         <type>LongTextArea</type>
         <visibleLines>10</visibleLines>
     </fields>
-    <label>SDGDefault</label>
-    <pluralLabel>SDGDefaults</pluralLabel>
+    <label>smdgDefault</label>
+    <pluralLabel>smdgDefaults</pluralLabel>
     <visibility>Public</visibility>
 </CustomObject>

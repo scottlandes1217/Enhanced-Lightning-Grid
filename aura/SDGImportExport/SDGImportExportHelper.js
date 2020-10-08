@@ -1,6 +1,6 @@
 ({
     export: function (component) {
-        var action = component.get("c.ExportSDG");
+        var action = component.get("c.Exportsmdg");
         var params = {
             "Id": component.get("v.recordId")
         };
@@ -33,7 +33,7 @@
     },
     import: function (component) {
 
-        var action = component.get("c.ImportSDG");
+        var action = component.get("c.Importsmdg");
         var params = {
             "payload": component.get("v.importpayload")
         };

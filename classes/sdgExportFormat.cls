@@ -4,9 +4,9 @@ Copyright © Felix Lindsay 21 November 2017
 flindsay@gmail.com
 All rights reserved
 */
-public class sdgExportFormat {
+public class smdgExportFormat {
     @Auraenabled
-    public sdg__c sdg{get; set;}
+    public smdg__c smdg{get; set;}
     @Auraenabled
     public integer version{get;set;}
 }

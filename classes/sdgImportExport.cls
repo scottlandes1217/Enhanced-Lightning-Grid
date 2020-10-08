@@ -4,38 +4,38 @@ Copyright © Felix Lindsay 21 November 2017
 flindsay@gmail.com
 All rights reserved
 */
-public with sharing class sdgImportExport {
+public with sharing class smdgImportExport {
     static integer CURRENTVERSION = 1;
     @AuraEnabled
-    public static String ExportSDG(String Id)
+    public static String Exportsmdg(String Id)
     {
-        sdgExportFormat pak = new sdgExportFormat();
+        smdgExportFormat pak = new smdgExportFormat();
         pak.version = CURRENTVERSION;
-        sdg__c sdg = [select name, sdg_tag__c, default_sort__c, filter__c, is_valid__c, Parent_Field_Name__c,  sObjectName__c, All_Rows__c, DisableSharing__c, (select name, APIName__c, Field_Style__c, FieldOrder__c, Hide_Filter__c, is_valid_field__c, Override_Label__c, sdg__c from SDGFields__r),  (select name, Action_Order__c, Action_Type__c, Event__c, Event_Payload__c, Requires_Createable__c, Requires_Deletable__c, Requires_Editable__c, SDG__c, Icon__c from SDG_Actions__r)  from sdg__c where id = :Id limit 1];
-        sdg.Id = null;
-        for(sdg_field__c field : sdg.SDGFields__r)
+        smdg__c smdg = [select name, smdg_tag__c, default_sort__c, filter__c, is_valid__c, Parent_Field_Name__c,  sObjectName__c, All_Rows__c, DisableSharing__c, (select name, APIName__c, Field_Style__c, FieldOrder__c, Hide_Filter__c, is_valid_field__c, Override_Label__c, smdg__c from smdgFields__r),  (select name, Action_Order__c, Action_Type__c, Event__c, Event_Payload__c, Requires_Createable__c, Requires_Deletable__c, Requires_Editable__c, smdg__c, Icon__c from smdg_Actions__r)  from smdg__c where id = :Id limit 1];
+        smdg.Id = null;
+        for(smdg_field__c field : smdg.smdgFields__r)
         {
             field.id = null;
-            field.sdg__c = null;
+            field.smdg__c = null;
         }
-        for(sdg_action__c action : sdg.SDG_Actions__r)
+        for(smdg_action__c action : smdg.smdg_Actions__r)
         {
             action.id = null;
-            action.sdg__c = null;
+            action.smdg__c = null;
         }
-        pak.sdg = sdg;
+        pak.smdg = smdg;
         String payload = JSON.serialize(pak);
         return payload;
     }
     @AuraEnabled
-    public static String ImportSDG(String payload)
+    public static String Importsmdg(String payload)
     {
 
         String Id;
-        sdgExportFormat pak;
+        smdgExportFormat pak;
         try
         {
-            pak = (sdgExportFormat)JSON.deserializeStrict(payload, sdgExportFormat.class);
+            pak = (smdgExportFormat)JSON.deserializeStrict(payload, smdgExportFormat.class);
         }
         catch (Exception ex)
         {
@@ -46,20 +46,20 @@ public with sharing class sdgImportExport {
         {
             try
             {
-                sdg__c sdg = pak.sdg;
-                insert sdg;
-                for(sdg_action__c action : sdg.SDG_Actions__r)
+                smdg__c smdg = pak.smdg;
+                insert smdg;
+                for(smdg_action__c action : smdg.smdg_Actions__r)
                 {
-                    action.sdg__c = sdg.id;
+                    action.smdg__c = smdg.id;
                 }
-                for(sdg_field__c field : sdg.SDGFields__r)
+                for(smdg_field__c field : smdg.smdgFields__r)
                 {
 
-                    field.sdg__c = sdg.id;
+                    field.smdg__c = smdg.id;
                 }
-                insert sdg.SDG_Actions__r;
-                insert sdg.SDGFields__r;
-                ID = sdg.Id;
+                insert smdg.smdg_Actions__r;
+                insert smdg.smdgFields__r;
+                ID = smdg.Id;
             }
             catch (Exception ex)
             {
@@ -72,25 +72,25 @@ public with sharing class sdgImportExport {
         }
         return ID;
     }
-    public static SDG__c GetSDG(String payload)
+    public static smdg__c Getsmdg(String payload)
     {
 
         String Id;
-        sdgExportFormat pak;
+        smdgExportFormat pak;
         try
         {
-            pak = (sdgExportFormat)JSON.deserializeStrict(payload, sdgExportFormat.class);
+            pak = (smdgExportFormat)JSON.deserializeStrict(payload, smdgExportFormat.class);
         }
         catch (Exception ex)
         {
             system.debug(ex.getMessage());
-            throw new sdgException('sdgImportExport:GetSDG: Unable to parse payload.  Please check you copied correctly.');
+            throw new smdgException('smdgImportExport:Getsmdg: Unable to parse payload.  Please check you copied correctly.');
         }
-        SDG__c sdg;
+        smdg__c smdg;
 
             try
             {
-                sdg = pak.sdg;
+                smdg = pak.smdg;
 
             }
             catch (Exception ex)
@@ -98,6 +98,6 @@ public with sharing class sdgImportExport {
                 throw new AuraHandledException('Unable to insert payload: ' + ex.getMessage());
             }
 
-        return sdg;
+        return smdg;
     }
 }

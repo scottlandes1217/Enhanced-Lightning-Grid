@@ -4,21 +4,21 @@ Copyright © Felix Lindsay 21 November 2017
 flindsay@gmail.com
 All rights reserved
 */
-global with sharing class sdgRelationshipDataProvider implements sdgDataProvider {
+global with sharing class smdgRelationshipDataProvider implements smdgDataProvider {
 
-    global static SDGResult getData(SDG CoreSDG, SDGRequest request)
+    global static smdgResult getData(smdg Coresmdg, smdgRequest request)
     {
-        throw new sdgDeprecatedException('sdgRelationshipDataProvider is Deprecated');
+        throw new smdgDeprecatedException('smdgRelationshipDataProvider is Deprecated');
     }
 
-    global  SDG LoadSDG(SDG coreSDG)
+    global  smdg Loadsmdg(smdg coresmdg)
     {
-         throw new sdgDeprecatedException('sdgRelationshipDataProvider is Deprecated');
+         throw new smdgDeprecatedException('smdgRelationshipDataProvider is Deprecated');
 
     }
-    global   SDG LoadSDG(String ParentRecordID, String RelationshipName, String FieldSetName)
+    global   smdg Loadsmdg(String ParentRecordID, String RelationshipName, String FieldSetName)
     {
-         throw new sdgDeprecatedException('sdgRelationshipDataProvider is Deprecated');
+         throw new smdgDeprecatedException('smdgRelationshipDataProvider is Deprecated');
     }
 
 }

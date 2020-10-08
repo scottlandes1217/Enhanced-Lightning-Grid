@@ -5,42 +5,42 @@ flindsay@gmail.com
 All rights reserved
 */
 @isTest
-public class sdgDataProviderRelationshipTest {
+public class smdgDataProviderRelationshipTest {
 
     private static testmethod void isSelectableTest()
     {
-        system.assertequals(false, sdgDataProviderRelationship.isUserSelectable(), 'sdgDataProviderRelationshipTest:isUserSelectable Should not be userSelectable');
+        system.assertequals(false, smdgDataProviderRelationship.isUserSelectable(), 'smdgDataProviderRelationshipTest:isUserSelectable Should not be userSelectable');
 
     }
-    static testMethod void loadSDG()
+    static testMethod void loadsmdg()
     {
-        //create an sdg
-        String sdgid = sdgTestData.GenerateTestSampleData();
+        //create an smdg
+        String smdgid = smdgTestData.GenerateTestSampleData();
 
         test.startTest();
-        SDG s = sdgDataProviderFactory.LoadSDG(sdgDataProviderType.Relationship.name(),sdgid,sdgNamespaceUtility.GetNamespace() + 'SDGFields__r', '');
+        smdg s = smdgDataProviderFactory.Loadsmdg(smdgDataProviderType.Relationship.name(),smdgid,smdgNamespaceUtility.GetNamespace() + 'smdgFields__r', '');
 
         //Should be only the ID field - as the fieldset won't exist
-        system.assertEquals(1, s.SDGFields.size(), 'Fields on relationship data provider (default fieldset)');
-        system.assertEquals(null, s.SDGActions, 'No actions on relationship data provider');
+        system.assertEquals(1, s.smdgFields.size(), 'Fields on relationship data provider (default fieldset)');
+        system.assertEquals(null, s.smdgActions, 'No actions on relationship data provider');
 
         test.stopTest();
 
     }
     static testMethod void getDataFieldSet()
     {
-        Id sdgid = sdgTestData.GenerateTestSampleData();
+        Id smdgid = smdgTestData.GenerateTestSampleData();
 
         test.startTest();
 
-        SDGREquest req = new SDGRequest();
-        req.SDGTag = sdgDataProviderType.Relationship + ':';
-        req.FieldSetName = sdgNamespaceUtility.GetNamespace() +'default';
-        req.ParentRecordID = sdgid;
-        req.RelationshipName = sdgNamespaceUtility.GetNamespace() + 'SDGFields__r';
+        smdgREquest req = new smdgRequest();
+        req.smdgTag = smdgDataProviderType.Relationship + ':';
+        req.FieldSetName = smdgNamespaceUtility.GetNamespace() +'default';
+        req.ParentRecordID = smdgid;
+        req.RelationshipName = smdgNamespaceUtility.GetNamespace() + 'smdgFields__r';
         req.pageid=1;
         req.pagesize=5;
-        sdgresult sr = sdgDataProviderFactory.getData(req);
+        smdgresult sr = smdgDataProviderFactory.getData(req);
 
         system.assertEquals(2, sr.FullQueryCount, 'Two rows in test data');
 
@@ -50,18 +50,18 @@ public class sdgDataProviderRelationshipTest {
     }
     static testMethod void getDataDefault()
     {
-        Id sdgid = sdgTestData.GenerateTestSampleData();
+        Id smdgid = smdgTestData.GenerateTestSampleData();
 
         test.startTest();
 
-        SDGREquest req = new SDGRequest();
-        req.SDGTag = sdgDataProviderType.Relationship + ':';
+        smdgREquest req = new smdgRequest();
+        req.smdgTag = smdgDataProviderType.Relationship + ':';
         req.FieldSetName = '';
-        req.ParentRecordID = sdgid;
-        req.RelationshipName = sdgNamespaceUtility.GetNamespace() + 'SDGFields__r';
+        req.ParentRecordID = smdgid;
+        req.RelationshipName = smdgNamespaceUtility.GetNamespace() + 'smdgFields__r';
         req.pageid=1;
         req.pagesize=5;
-        sdgresult sr = sdgDataProviderFactory.getData(req);
+        smdgresult sr = smdgDataProviderFactory.getData(req);
 
         system.assertEquals(2, sr.FullQueryCount, 'Two rows in test data');
 

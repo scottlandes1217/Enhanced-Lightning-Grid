@@ -4,16 +4,16 @@ Copyright © Felix Lindsay 21 November 2017
 flindsay@gmail.com
 All rights reserved
 */
-global with sharing class SDGRequest
+global with sharing class smdgRequest
 {
     global String RelationshipName = '';
     global String FieldSetName = '';
-    global String SDGTag = '';
+    global String smdgTag = '';
     global String ParentRecordID = '';
     global String ParentFieldName = '';
-    global List<SDGFilter> Filters;
+    global List<smdgFilter> Filters;
 
-    global SDGRequest()
+    global smdgRequest()
     {
 
     }

@@ -4,14 +4,14 @@ Copyright © Felix Lindsay 21 November 2017
 flindsay@gmail.com
 All rights reserved
 */
-public with sharing class sdgPathParser {
+public with sharing class smdgPathParser {
     //Class to navigate a path string from a starting object to get to the ultimate field.  eg type=Contact, and fieldpath = Account.Owner.Name
     List<String> path;
     private List<String> NewPath = new List<String>();
     Schema.SObjectType type;
 
 
-    public SDGPathParser(String fieldpath, Schema.SObjectType type)
+    public smdgPathParser(String fieldpath, Schema.SObjectType type)
     {
         this.path = fieldpath.split('\\.');
         this.type = type;

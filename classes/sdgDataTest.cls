@@ -1,5 +1,5 @@
 @istest
-public with sharing class sdgDataTest {
+public with sharing class smdgDataTest {
 
       
 }

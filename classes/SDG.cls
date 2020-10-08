@@ -4,29 +4,29 @@ Copyright © Felix Lindsay 21 November 2017
 flindsay@gmail.com
 All rights reserved
 */
-global with sharing class SDG
+global with sharing class smdg
 {
-    global SDGInternal internalData ;
+    global smdgInternal internalData ;
     global String sObjectName;
-    global List<SDGAction> SDGActions;
-    global List<SDGField> SDGFields;
+    global List<smdgAction> smdgActions;
+    global List<smdgField> smdgFields;
 
-    global SDG()
+    global smdg()
     {
-        throw new sdgDeprecatedException('SDG requires a parameterized constructor');
+        throw new smdgDeprecatedException('smdg requires a parameterized constructor');
     }
 
-    global SDG(String sUniqueKey)
+    global smdg(String sUniqueKey)
     {
-        SDGInternal einternal = new SDGInternal();
+        smdgInternal einternal = new smdgInternal();
         eInternal.sUniqueKey = sUniqueKey;
         this.internalData = einternal;
     }
-    global SDG(String objectname, String ParentFieldName, String sObjectName, String sFilter, String sDefaultSort, String sUniqueKey)
+    global smdg(String objectname, String ParentFieldName, String sObjectName, String sFilter, String sDefaultSort, String sUniqueKey)
     {
         this.sObjectName = objectName;
 
-        SDGInternal einternal = new SDGInternal();
+        smdgInternal einternal = new smdgInternal();
         einternal.ParentFieldName = ParentFieldName;
         eInternal.sObjectName = sObjectName;
         eInternal.sFilter = sFilter;
@@ -35,11 +35,11 @@ global with sharing class SDG
         eInternal.AllRows = false;
         this.internalData = einternal;
     }
-    global SDG(String objectname, String ParentFieldName, String sObjectName, String sFilter, String sDefaultSort, String sUniqueKey, Boolean AllRows)
+    global smdg(String objectname, String ParentFieldName, String sObjectName, String sFilter, String sDefaultSort, String sUniqueKey, Boolean AllRows)
     {
         this.sObjectName = objectName;
 
-        SDGInternal einternal = new SDGInternal();
+        smdgInternal einternal = new smdgInternal();
         einternal.ParentFieldName = ParentFieldName;
         eInternal.sObjectName = sObjectName;
         eInternal.sFilter = sFilter;

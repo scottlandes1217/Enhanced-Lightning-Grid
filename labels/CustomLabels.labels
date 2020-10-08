@@ -1,245 +1,245 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
     <labels>
-        <fullName>sdgAfter</fullName>
+        <fullName>smdgAfter</fullName>
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>After</shortDescription>
         <value>is After</value>
     </labels>
     <labels>
-        <fullName>sdgAgo</fullName>
+        <fullName>smdgAgo</fullName>
         <language>en_US</language>
         <protected>false</protected>
-        <shortDescription>sdgAgo</shortDescription>
+        <shortDescription>smdgAgo</shortDescription>
         <value>{0} ago</value>
     </labels>
     <labels>
-        <fullName>sdgBefore</fullName>
+        <fullName>smdgBefore</fullName>
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>Before</shortDescription>
         <value>is before</value>
     </labels>
     <labels>
-        <fullName>sdgContains</fullName>
+        <fullName>smdgContains</fullName>
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>Contains</shortDescription>
         <value>Contains</value>
     </labels>
     <labels>
-        <fullName>sdgEnds</fullName>
+        <fullName>smdgEnds</fullName>
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>Ends</shortDescription>
         <value>Ends with</value>
     </labels>
     <labels>
-        <fullName>sdgEquals</fullName>
+        <fullName>smdgEquals</fullName>
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>Equals</shortDescription>
         <value>Equals</value>
     </labels>
     <labels>
-        <fullName>sdgFalse</fullName>
+        <fullName>smdgFalse</fullName>
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>False</shortDescription>
         <value>False</value>
     </labels>
     <labels>
-        <fullName>sdgFiltered</fullName>
+        <fullName>smdgFiltered</fullName>
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>Filtered</shortDescription>
         <value>Filtered</value>
     </labels>
     <labels>
-        <fullName>sdgFilteredOf</fullName>
+        <fullName>smdgFilteredOf</fullName>
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>Filtered Of</shortDescription>
         <value>of</value>
     </labels>
     <labels>
-        <fullName>sdgGreaterThan</fullName>
+        <fullName>smdgGreaterThan</fullName>
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>Greater than</shortDescription>
         <value>Greater than</value>
     </labels>
     <labels>
-        <fullName>sdgIn</fullName>
+        <fullName>smdgIn</fullName>
         <language>en_US</language>
         <protected>false</protected>
-        <shortDescription>sdgIn</shortDescription>
+        <shortDescription>smdgIn</shortDescription>
         <value>In {0}</value>
     </labels>
     <labels>
-        <fullName>sdgLastMonth</fullName>
+        <fullName>smdgLastMonth</fullName>
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>Last Month</shortDescription>
         <value>Last month</value>
     </labels>
     <labels>
-        <fullName>sdgLastQuarter</fullName>
+        <fullName>smdgLastQuarter</fullName>
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>Last quarter</shortDescription>
         <value>Last quarter</value>
     </labels>
     <labels>
-        <fullName>sdgLastWeek</fullName>
+        <fullName>smdgLastWeek</fullName>
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>Last Week</shortDescription>
         <value>Last Week</value>
     </labels>
     <labels>
-        <fullName>sdgLastYear</fullName>
+        <fullName>smdgLastYear</fullName>
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>Last Year</shortDescription>
         <value>Last Year</value>
     </labels>
     <labels>
-        <fullName>sdgLessThan</fullName>
+        <fullName>smdgLessThan</fullName>
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>Less than</shortDescription>
         <value>Less than</value>
     </labels>
     <labels>
-        <fullName>sdgNextMonth</fullName>
+        <fullName>smdgNextMonth</fullName>
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>Next month</shortDescription>
         <value>Next month</value>
     </labels>
     <labels>
-        <fullName>sdgNextQuarter</fullName>
+        <fullName>smdgNextQuarter</fullName>
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>Next Quarter</shortDescription>
         <value>Next quarter</value>
     </labels>
     <labels>
-        <fullName>sdgNextWeek</fullName>
+        <fullName>smdgNextWeek</fullName>
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>Next week</shortDescription>
         <value>Next Week</value>
     </labels>
     <labels>
-        <fullName>sdgNextYear</fullName>
+        <fullName>smdgNextYear</fullName>
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>Next year</shortDescription>
         <value>Next year</value>
     </labels>
     <labels>
-        <fullName>sdgNoData</fullName>
+        <fullName>smdgNoData</fullName>
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>No data</shortDescription>
         <value>No data returned</value>
     </labels>
     <labels>
-        <fullName>sdgNotContains</fullName>
+        <fullName>smdgNotContains</fullName>
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>Not Contains</shortDescription>
         <value>Does not contain</value>
     </labels>
     <labels>
-        <fullName>sdgNotEquals</fullName>
+        <fullName>smdgNotEquals</fullName>
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>Not Equals</shortDescription>
         <value>Not Equals</value>
     </labels>
     <labels>
-        <fullName>sdgPage</fullName>
+        <fullName>smdgPage</fullName>
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>Page</shortDescription>
         <value>Page</value>
     </labels>
     <labels>
-        <fullName>sdgPage_Size</fullName>
+        <fullName>smdgPage_Size</fullName>
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>Page Size</shortDescription>
         <value>Page Size</value>
     </labels>
     <labels>
-        <fullName>sdgStarts</fullName>
+        <fullName>smdgStarts</fullName>
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>Starts</shortDescription>
         <value>Starts with</value>
     </labels>
     <labels>
-        <fullName>sdgThisMonth</fullName>
+        <fullName>smdgThisMonth</fullName>
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>This Month</shortDescription>
         <value>This month</value>
     </labels>
     <labels>
-        <fullName>sdgThisQuarter</fullName>
+        <fullName>smdgThisQuarter</fullName>
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>This quarter</shortDescription>
         <value>This quarter</value>
     </labels>
     <labels>
-        <fullName>sdgThisWeek</fullName>
+        <fullName>smdgThisWeek</fullName>
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>This Week</shortDescription>
         <value>This Week</value>
     </labels>
     <labels>
-        <fullName>sdgThisYear</fullName>
+        <fullName>smdgThisYear</fullName>
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>This Year</shortDescription>
         <value>This year</value>
     </labels>
     <labels>
-        <fullName>sdgToday</fullName>
+        <fullName>smdgToday</fullName>
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>Today</shortDescription>
         <value>Today</value>
     </labels>
     <labels>
-        <fullName>sdgTomorrow</fullName>
+        <fullName>smdgTomorrow</fullName>
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>Tomorrow</shortDescription>
         <value>Tomorrow</value>
     </labels>
     <labels>
-        <fullName>sdgTrue</fullName>
+        <fullName>smdgTrue</fullName>
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>True</shortDescription>
         <value>True</value>
     </labels>
     <labels>
-        <fullName>sdgView_All</fullName>
+        <fullName>smdgView_All</fullName>
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>View All</shortDescription>
         <value>View All</value>
     </labels>
     <labels>
-        <fullName>sdgYesterday</fullName>
+        <fullName>smdgYesterday</fullName>
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>Yesterday</shortDescription>

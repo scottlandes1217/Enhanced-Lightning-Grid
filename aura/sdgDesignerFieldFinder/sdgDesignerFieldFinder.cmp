@@ -1,4 +1,4 @@
-<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId" access="global" controller="sdgDesigner">
+<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId" access="global" controller="smdgDesigner">
 
     <aura:attribute name="recordId" type="String" />
     <aura:attribute name="selectedPath" type="String" />
@@ -24,7 +24,7 @@
             </div>
         </div>
 
-        <c:SDGFieldChooser aura:id="picker" recordId="{!v.recordId}" selectedPath="{!v.selectedPath}" isValid="{!v.isValid}" />
+        <c:smdgFieldChooser aura:id="picker" recordId="{!v.recordId}" selectedPath="{!v.selectedPath}" isValid="{!v.isValid}" />
 
         <aura:if isTrue="{!v.isValid}">
 

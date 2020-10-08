@@ -83,7 +83,7 @@
                     });
                     navToast.fire();
                     
-                    var evtRefresh = $A.get("e.c:evtRefreshSDG");
+                    var evtRefresh = $A.get("e.c:evtRefreshsmdg");
                     evtRefresh.fire();
                 }
             }

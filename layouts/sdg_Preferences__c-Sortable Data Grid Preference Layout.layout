@@ -20,7 +20,7 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>sdgKey__c</field>
+                <field>smdgKey__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>

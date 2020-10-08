@@ -4,12 +4,12 @@ Copyright © Felix Lindsay 21 November 2017
 flindsay@gmail.com
 All rights reserved
 */
-global with sharing class sdgSecurity {
-    global  class sdgInvalidPermissionsException extends sdgException {}
+global with sharing class smdgSecurity {
+    global  class smdgInvalidPermissionsException extends smdgException {}
     
     global static Boolean CanQuery(String Context, String sObjectType, String commaDelimitedFields, String nonNamespaceFields, String namespace, Boolean ThrowEx)
     {
-        system.debug(Context + ':sdgSecurity:CanQuery for : ' + namespace + sObjectType + ' ' + commaDelimitedFields);
+        system.debug(Context + ':smdgSecurity:CanQuery for : ' + namespace + sObjectType + ' ' + commaDelimitedFields);
         SObjectType schemaType = Schema.getGlobalDescribe().get(namespace + sObjectType);
         
         Map<String, SObjectField> rawfields = schemaType.getDescribe().fields.getMap();
@@ -34,35 +34,35 @@ global with sharing class sdgSecurity {
         for (String field : allfields)
             if (rawfields.get( field)==null)
         {
-            system.debug('sdgSecurity:CanQuery: Cannot get reference to field: ' + field + ' on object: ' + namespace + sObjectType );
+            system.debug('smdgSecurity:CanQuery: Cannot get reference to field: ' + field + ' on object: ' + namespace + sObjectType );
             if (throwex)
-                throw new sdgInvalidPermissionsException(Context + ':sdgSecurity:CanQuery: Cannot get reference to field: ' + field + ' on object: ' + namespace + sObjectType );
+                throw new smdgInvalidPermissionsException(Context + ':smdgSecurity:CanQuery: Cannot get reference to field: ' + field + ' on object: ' + namespace + sObjectType );
             return false;
         }
         else
         {
             if (!rawfields.get(field).getDescribe().isAccessible())
             {
-                system.debug ('sdgSecurity:CanQuery: User cannot access field: ' + field + ' on object: ' + sObjectType);
+                system.debug ('smdgSecurity:CanQuery: User cannot access field: ' + field + ' on object: ' + sObjectType);
                 if (throwex)
-                    throw new sdgInvalidPermissionsException(Context + ':sdgSecurity:CanQuery: Cannot get access field: ' + field + ' on object: ' + namespace + sObjectType );
+                    throw new smdgInvalidPermissionsException(Context + ':smdgSecurity:CanQuery: Cannot get access field: ' + field + ' on object: ' + namespace + sObjectType );
                 return false;
             }
         }
         return true;
     }
     
-    public static List<sdg_action__c> PermittedActions(String sObjectName, List<sdg_action__c> AllActions)
+    public static List<smdg_action__c> PermittedActions(String sObjectName, List<smdg_action__c> AllActions)
     {
         //Can user edit:
         Boolean bUserCanEdit = false;
         Boolean bUserCanCreate = false;
         Boolean bUserCanDelete = false;
-        List<sdg_action__c> permittedActions = new List<sdg_action__c>();
+        List<smdg_action__c> permittedActions = new List<smdg_action__c>();
         
         if (String.isBlank( sObjectName))
         {
-            system.debug('sdgSecurity:PermittedActions: missing sObjectName');
+            system.debug('smdgSecurity:PermittedActions: missing sObjectName');
         }
         else
         {
@@ -102,8 +102,8 @@ global with sharing class sdgSecurity {
             }
             catch (exception ex)
             {
-                system.debug('sdgSecurity:PermittedActions: invalid sObjectName: ' + ex.getMessage());
-                throw new SDGException('sdgSecurity:PermittedActions: invalid sObjectName' + ex.getMessage());
+                system.debug('smdgSecurity:PermittedActions: invalid sObjectName: ' + ex.getMessage());
+                throw new smdgException('smdgSecurity:PermittedActions: invalid sObjectName' + ex.getMessage());
             }
             
             system.debug(bUserCanCreate);
@@ -111,7 +111,7 @@ global with sharing class sdgSecurity {
             system.debug(bUserCanEdit);
             
             
-            for (sdg_action__c a : AllActions)
+            for (smdg_action__c a : AllActions)
             {
                 Boolean UserCanUseAction = true;
                 if (a.Requires_Createable__c && !bUserCanCreate)

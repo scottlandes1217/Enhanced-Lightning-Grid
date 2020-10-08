@@ -14,7 +14,7 @@
             }
             if (isDesigner) {
                 var thiscmp = cmp.find('placeholder');
-                $A.util.addClass(thiscmp, 'sdgdesignplaceholder');
+                $A.util.addClass(thiscmp, 'smdgdesignplaceholder');
             }
         }
         catch (err) {

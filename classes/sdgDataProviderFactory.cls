@@ -4,15 +4,15 @@ Copyright © Felix Lindsay 21 November 2017
 flindsay@gmail.com
 All rights reserved
 */
-public with sharing class sdgDataProviderFactory  {
-    public class sdgDataProviderFactoryException extends Exception {}
-    public class sdgInvalidConfigurationNameException extends Exception {}
+public with sharing class smdgDataProviderFactory  {
+    public class smdgDataProviderFactoryException extends Exception {}
+    public class smdgInvalidConfigurationNameException extends Exception {}
     private static final string delim = ':';
 
     public static Boolean isNameValid(String name)
     {
         boolean isOK = false;
-        if (name.startswithignoreCase(sdgDataProviderType.Apex.name() + delim) || name.startswithignoreCase(sdgDataProviderType.Metadata.name() + delim) || name.startswithignoreCase(sdgDataProviderType.CustomObject.name() + delim) || name.startswithignoreCase(sdgDataProviderType.Relationship.name() + delim))
+        if (name.startswithignoreCase(smdgDataProviderType.Apex.name() + delim) || name.startswithignoreCase(smdgDataProviderType.Metadata.name() + delim) || name.startswithignoreCase(smdgDataProviderType.CustomObject.name() + delim) || name.startswithignoreCase(smdgDataProviderType.Relationship.name() + delim))
         {
             String[] parts = name.split(delim);
             if (parts.size()>1)
@@ -22,31 +22,31 @@ public with sharing class sdgDataProviderFactory  {
         }
         if (!isOK)
         {
-            throw new sdgInvalidConfigurationNameException('Invalid configuration: ' + name);
+            throw new smdgInvalidConfigurationNameException('Invalid configuration: ' + name);
         }
         return isOk;
     }
 
     @TestVisible
-    private  static sdgIDataProvider getClass(String name)
+    private  static smdgIDataProvider getClass(String name)
     {
-        sdgIDataProvider ret;
+        smdgIDataProvider ret;
         try
         {
-            sdgDataProviderType sdgtype = getType(name);
+            smdgDataProviderType smdgtype = getType(name);
 
 
             String tag = GetTag(name);
-            if (sdgtype == sdgDataProviderType.Relationship)
+            if (smdgtype == smdgDataProviderType.Relationship)
             {
-                system.debug('sdgDataProviderFactory:getClass: SDGRelationshipDataProvider');
+                system.debug('smdgDataProviderFactory:getClass: smdgRelationshipDataProvider');
 
-                SDGDataProviderRelationship relation = new SDGDataProviderRelationship();
+                smdgDataProviderRelationship relation = new smdgDataProviderRelationship();
                 ret = relation ;
             }
-            else if (sdgtype== sdgDataProviderType.Apex)
+            else if (smdgtype== smdgDataProviderType.Apex)
             {
-                system.debug('sdgDataProviderFactory:getClass: ' + name);
+                system.debug('smdgDataProviderFactory:getClass: ' + name);
 
                 //Test it:
                 try
@@ -54,35 +54,35 @@ public with sharing class sdgDataProviderFactory  {
                     Type customType = Type.forName(tag);
                     Object a = customType.newInstance();
                     //is this a valid type that implements the correct interface
-                    if (a instanceof sdgIDataProvider)
+                    if (a instanceof smdgIDataProvider)
                     {
                         //all ok
-                        ret = (sdgIDataProvider)a;
+                        ret = (smdgIDataProvider)a;
                     }
                 }
-                catch (sdgException sdgex)
+                catch (smdgException smdgex)
                 {
-                    throw sdgex;
+                    throw smdgex;
                 }
                 catch(Exception ex)
                 {
                     //Invalid class name
-                    throw new sdgDataProviderFactoryException('Unable to instantiate class: ' + name,ex);
+                    throw new smdgDataProviderFactoryException('Unable to instantiate class: ' + name,ex);
                 }
 
             }
-            else if (sdgtype ==sdgDataProviderType.CustomObject)
+            else if (smdgtype ==smdgDataProviderType.CustomObject)
             {
                 //use the normal data provider:
-                system.debug('sdgDataProviderFactory:getClass: SDGNativeDataProvider');
+                system.debug('smdgDataProviderFactory:getClass: smdgNativeDataProvider');
 
-                SDGDataProviderNative native = new SDGDataProviderNative();
+                smdgDataProviderNative native = new smdgDataProviderNative();
                 ret= native;
             }
-            else if ( sdgtype==sdgDataProviderType.Metadata)
+            else if ( smdgtype==smdgDataProviderType.Metadata)
             {
-                system.debug('sdgDataProviderFactory:getClass: SDGMetadataDataProvider');
-                SDGDataProviderMetadata meta = new SDGDataProviderMetadata();
+                system.debug('smdgDataProviderFactory:getClass: smdgMetadataDataProvider');
+                smdgDataProviderMetadata meta = new smdgDataProviderMetadata();
                 ret= meta;
             }
 
@@ -92,33 +92,33 @@ public with sharing class sdgDataProviderFactory  {
             }
             else
             {
-                throw new sdgDataProviderFactoryException('sdgDataProviderFactory:getClass: No provider available: ' + name);
+                throw new smdgDataProviderFactoryException('smdgDataProviderFactory:getClass: No provider available: ' + name);
             }
         }
         catch (Exception ex)
         {
-            if (ex instanceof sdgException)
+            if (ex instanceof smdgException)
             {
                 throw ex;
             }
             else
             {
-                throw new sdgDataProviderFactoryException('Unable to get class', ex);
+                throw new smdgDataProviderFactoryException('Unable to get class', ex);
             }
         }
         return null;
     }
-    private static sdgDataProviderType GetType(String tag)
+    private static smdgDataProviderType GetType(String tag)
     {
-        sdgDataProviderType ret =sdgDataProviderType.Relationship; //default
-        if (tag.startsWithIgnoreCase(sdgDataProviderType.Apex.name() + delim))
-            ret = sdgDataProviderType.Apex;
-        if (tag.startsWithIgnoreCase(sdgDataProviderType.CustomObject.name() + delim))
-            ret = sdgDataProviderType.CustomObject;
-        if (tag.startsWithIgnoreCase(sdgDataProviderType.Relationship.name() + delim))
-            ret = sdgDataProviderType.Relationship;
-        if (tag.startsWithIgnoreCase(sdgDataProviderType.Metadata.name() + delim))
-            ret = sdgDataProviderType.Metadata;
+        smdgDataProviderType ret =smdgDataProviderType.Relationship; //default
+        if (tag.startsWithIgnoreCase(smdgDataProviderType.Apex.name() + delim))
+            ret = smdgDataProviderType.Apex;
+        if (tag.startsWithIgnoreCase(smdgDataProviderType.CustomObject.name() + delim))
+            ret = smdgDataProviderType.CustomObject;
+        if (tag.startsWithIgnoreCase(smdgDataProviderType.Relationship.name() + delim))
+            ret = smdgDataProviderType.Relationship;
+        if (tag.startsWithIgnoreCase(smdgDataProviderType.Metadata.name() + delim))
+            ret = smdgDataProviderType.Metadata;
 
         return ret;
     }
@@ -133,19 +133,19 @@ public with sharing class sdgDataProviderFactory  {
         return ret;
     }
 
-    public  static SDGResult getData( SDGRequest request)
+    public  static smdgResult getData( smdgRequest request)
     {
         return getData(request, null);
     }
-    public  static SDGResult getData( SDGRequest request, SDG coreSDG)
+    public  static smdgResult getData( smdgRequest request, smdg coresmdg)
     {
 
-        system.debug('sdgDataProviderFactory:getData: ' + request.SDGTag);
-        SDGResult result = new SDGResult();
-        if (coreSDG == null)
-            coreSDG = LoadSDG(request.SDGTag, request.ParentRecordId, request.RelationshipName, request.FieldSetName);
-        sdgIDataProvider handler = sdgDataProviderFactory.getClass(request.SDGTag);
-        system.debug('sdgDataProviderFactory:getData preparing page size');
+        system.debug('smdgDataProviderFactory:getData: ' + request.smdgTag);
+        smdgResult result = new smdgResult();
+        if (coresmdg == null)
+            coresmdg = Loadsmdg(request.smdgTag, request.ParentRecordId, request.RelationshipName, request.FieldSetName);
+        smdgIDataProvider handler = smdgDataProviderFactory.getClass(request.smdgTag);
+        system.debug('smdgDataProviderFactory:getData preparing page size');
         //Fix potential problems in the request:
         if (request.pageid ==null)
             request.pageid = 1;
@@ -156,44 +156,44 @@ public with sharing class sdgDataProviderFactory  {
         {
             try
             {
-                result = handler.getData(coreSDG, request);
+                result = handler.getData(coresmdg, request);
             }
             catch (exception ex)
             {
-                if (sdgEx.RaiseNew(ex))
-                    throw new sdgDataProviderFactoryException('Unable to get data from the data provider: ' + coreSDG.sObjectName + ' - ' + ex.getMessage(), ex);
+                if (smdgEx.RaiseNew(ex))
+                    throw new smdgDataProviderFactoryException('Unable to get data from the data provider: ' + coresmdg.sObjectName + ' - ' + ex.getMessage(), ex);
             }
         }
         else
         {
-            throw new sdgDataProviderFactoryException('Invalid data provider on SDG: ' + coreSDG.sObjectName);
+            throw new smdgDataProviderFactoryException('Invalid data provider on smdg: ' + coresmdg.sObjectName);
         }
 
         return result;
     }
 
-    public static SDG LoadSDG(String SDGTag, String ParentRecordId, String RelationshipName, String FieldsetName)
+    public static smdg Loadsmdg(String smdgTag, String ParentRecordId, String RelationshipName, String FieldsetName)
     {
 
-        SDG CoreSDG;
+        smdg Coresmdg;
 
-        if (GetType(SDGTag) == sdgDataProviderType.Relationship)
+        if (GetType(smdgTag) == smdgDataProviderType.Relationship)
         {
-            system.debug('sdgDataProviderFactory:LoadSDG:Loading from Fieldset');
+            system.debug('smdgDataProviderFactory:Loadsmdg:Loading from Fieldset');
             system.debug('RelationshipName: ' + RelationshipName);
 
-            //sdgLoaderFieldSet l = new sdgLoaderFieldset();
-            sdgDataProviderRelationship dp = new sdgDataProviderRelationship();
-            coreSDG = dp.LoadSDG(ParentRecordID, RelationshipName, FieldSetName);
+            //smdgLoaderFieldSet l = new smdgLoaderFieldset();
+            smdgDataProviderRelationship dp = new smdgDataProviderRelationship();
+            coresmdg = dp.Loadsmdg(ParentRecordID, RelationshipName, FieldSetName);
         }
         else
         {
-            system.debug('sdgDataProviderFactory:LoadSDG: ' + SDGTag);
+            system.debug('smdgDataProviderFactory:Loadsmdg: ' + smdgTag);
 
-            coreSDG = getClass(SDGTag).LoadSDG(getTag(SDGTag), ParentRecordId);
+            coresmdg = getClass(smdgTag).Loadsmdg(getTag(smdgTag), ParentRecordId);
 
         }
-        return coreSDG;
+        return coresmdg;
 
     }
 

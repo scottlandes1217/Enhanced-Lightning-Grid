@@ -5,7 +5,7 @@ flindsay@gmail.com
 All rights reserved
 */
 @isTest
-public with sharing class sdgObjectEventHandlerTest {
+public with sharing class smdgObjectEventHandlerTest {
 
 
     static testMethod void DeleteTestUnauthorised()
@@ -14,37 +14,37 @@ public with sharing class sdgObjectEventHandlerTest {
         // Setup test data
         // This code runs as the system user
 
-        User u1 = sdgSecurityTest.CreateUser('1');
-        user u2 = sdgSecurityTest.CreateUser('2');
-        String sdgid = '';
+        User u1 = smdgSecurityTest.CreateUser('1');
+        user u2 = smdgSecurityTest.CreateUser('2');
+        String smdgid = '';
 
         System.runAs(u1) {
-            sdgid = sdgTestData.GenerateTestSDG();
+            smdgid = smdgTestData.GenerateTestsmdg();
 
         }
-        List<sdg__c> sdgs = [select id from sdg__c where id = :sdgid];
-        system.assertequals(1,sdgs.size(), 'Should be 1 SDG');
+        List<smdg__c> smdgs = [select id from smdg__c where id = :smdgid];
+        system.assertequals(1,smdgs.size(), 'Should be 1 smdg');
 
         System.runAs(u2) {
-            String results = sdgObjectEventHandler.DeleteObject(sdgid);
+            String results = smdgObjectEventHandler.DeleteObject(smdgid);
             system.debug(results);
         }
-        sdgs = [select id from sdg__c where id = :sdgid];
-        system.assertequals(1,sdgs.size(), 'Should still be 1 SDG as user cannot delete');
+        smdgs = [select id from smdg__c where id = :smdgid];
+        system.assertequals(1,smdgs.size(), 'Should still be 1 smdg as user cannot delete');
         //As original user again
         System.runAs(u1) {
-            String results2 = sdgObjectEventHandler.DeleteObject(sdgid);
+            String results2 = smdgObjectEventHandler.DeleteObject(smdgid);
             system.debug(results2);
         }
-        sdgs = [select id from sdg__c where id = :sdgid];
-        system.assertequals(1,sdgs.size(), 'Should still be 1 SDG as u1 does not have crud rights');
+        smdgs = [select id from smdg__c where id = :smdgid];
+        system.assertequals(1,smdgs.size(), 'Should still be 1 smdg as u1 does not have crud rights');
 
         //Now back as admin
-        String results3 = sdgObjectEventHandler.DeleteObject(sdgid);
+        String results3 = smdgObjectEventHandler.DeleteObject(smdgid);
         system.debug(results3);
 
-        sdgs = [select id from sdg__c where id = :sdgid];
-        system.assertequals(0,sdgs.size(), 'Should be 0 SDG as admin has delete all');
+        smdgs = [select id from smdg__c where id = :smdgid];
+        system.assertequals(0,smdgs.size(), 'Should be 0 smdg as admin has delete all');
 
     }
     static testMethod void DeleteTest()
@@ -60,7 +60,7 @@ public with sharing class sdgObjectEventHandlerTest {
         system.assert(test1.size()==1,'Test account was not created');
 
         //Now try to delete it:
-        String results = sdgObjectEventHandler.DeleteObject(aID);
+        String results = smdgObjectEventHandler.DeleteObject(aID);
 
         //should be deleted
         List<Account> test2 = [select id from account where id = :aID];
@@ -68,7 +68,7 @@ public with sharing class sdgObjectEventHandlerTest {
 
 
         //Now test for invalid id (by using same ID again)
-        String results2 = sdgObjectEventHandler.DeleteObject(aID);
+        String results2 = smdgObjectEventHandler.DeleteObject(aID);
         system.assert(results2.contains('You do not have permission to delete this record'), 'Should have thrown an error at deleting invalid ID');
 
     }
@@ -78,7 +78,7 @@ public with sharing class sdgObjectEventHandlerTest {
         //Cannot test record types within test classes so simply assert no error:
         try
         {
-            String results = sdgObjectEventHandler.GetRecordTypes('Account');
+            String results = smdgObjectEventHandler.GetRecordTypes('Account');
             system.assert(true);
         }
         catch (exception ex)

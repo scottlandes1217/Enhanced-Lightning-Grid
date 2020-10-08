@@ -5,12 +5,12 @@ flindsay@gmail.com
 All rights reserved
 */
 @isTest
-public with sharing class sdgLabelsTest {
-    //Instantiate teh sdgLabels object
+public with sharing class smdgLabelsTest {
+    //Instantiate teh smdgLabels object
   static testMethod void GetLabels()
   {
       List<String> labels = new List<String>();
-      labels = sdgLabels.strings;
+      labels = smdgLabels.strings;
       system.assert(labels.size()>0);
   }
 }

@@ -4,58 +4,58 @@ Copyright © Felix Lindsay 21 November 2017
 flindsay@gmail.com
 All rights reserved
 */
-global with sharing class sdgDataProviderMetadata implements sdgIDataProvider {
+global with sharing class smdgDataProviderMetadata implements smdgIDataProvider {
     global static Boolean isUserSelectable()
     {
         return false;
     }
 
-    global static SDGResult getData(SDG CoreSDG, SDGRequest request)
+    global static smdgResult getData(smdg Coresmdg, smdgRequest request)
     {
 
-        SDGResult result =  sdgQueryEngine.getSDGResultRaw(CoreSDG, request);
+        smdgResult result =  smdgQueryEngine.getsmdgResultRaw(Coresmdg, request);
         return result;
     }
 
 
-    global SDG LoadSDG(String SDGTag, String ParentRecordId)
+    global smdg Loadsmdg(String smdgTag, String ParentRecordId)
     {
-        SDG CoreSDG = null;
+        smdg Coresmdg = null;
         try
         {
 
-            SDGDefaults__mdt md = [SELECT Id, Definition__c FROM SDGDefaults__mdt where developername = :SDGTag limit 1];
+            smdgDefaults__mdt md = [SELECT Id, Definition__c FROM smdgDefaults__mdt where developername = :smdgTag limit 1];
      
-            String definition = md.definition__c.replace('$namespace$', sdgNamespaceUtility.GetNamespace());
+            String definition = md.definition__c.replace('$namespace$', smdgNamespaceUtility.GetNamespace());
      
-            SDG__c e =  sdgImportExport.getSDG(definition);
+            smdg__c e =  smdgImportExport.getsmdg(definition);
 
-            CoreSDG = sdgMapper.Convert(e, e.sdgfields__r, sdgSecurity.PermittedActions(e.sObjectName__c, e.sdg_actions__r), false);
+            Coresmdg = smdgMapper.Convert(e, e.smdgfields__r, smdgSecurity.PermittedActions(e.sObjectName__c, e.smdg_actions__r), false);
 
             //now put the fields and action ids on - as they won't be in the pak payload
             integer iCounter = 1;
-            coresdg.SDGFields.sort();
-            coresdg.SDGActions.sort();
+            coresmdg.smdgFields.sort();
+            coresmdg.smdgActions.sort();
             
-            for (SDGField field: coresdg.SDGFields)
+            for (smdgField field: coresmdg.smdgFields)
             {
                 field.id = string.valueOf(icounter);
                 icounter++;
             }
-            for (sdgAction action: coresdg.SDGActions)
+            for (smdgAction action: coresmdg.smdgActions)
             {
                 action.id = string.valueOf(icounter);
                 icounter++;
             }
 
 
-            system.debug('sdgDataProviderMetadata:LoadSDG: ' + SDGTag + ' ' + JSON.serialize(CoreSDG) );
+            system.debug('smdgDataProviderMetadata:Loadsmdg: ' + smdgTag + ' ' + JSON.serialize(Coresmdg) );
         }
         catch (Exception ex)
         {
-            throw new sdgException('sdgDataProviderMetadata:LoadSDG: ' + SDGTag + ' : ' + ex.getMessage());
+            throw new smdgException('smdgDataProviderMetadata:Loadsmdg: ' + smdgTag + ' : ' + ex.getMessage());
         }
-        return coreSDG;
+        return coresmdg;
     }
 
 

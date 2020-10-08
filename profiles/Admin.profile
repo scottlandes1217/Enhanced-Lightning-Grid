@@ -26,409 +26,409 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>PostInstallCreateSDGData</apexClass>
+        <apexClass>PostInstallCreatesmdgData</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>SDG</apexClass>
+        <apexClass>smdg</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>SDGAction</apexClass>
+        <apexClass>smdgAction</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>SDGData</apexClass>
+        <apexClass>smdgData</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>SDGField</apexClass>
+        <apexClass>smdgField</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>SDGFilter</apexClass>
+        <apexClass>smdgFilter</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>SDGInternal</apexClass>
+        <apexClass>smdgInternal</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>SDGRequest</apexClass>
+        <apexClass>smdgRequest</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>SDGResult</apexClass>
+        <apexClass>smdgResult</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>sdgActionTest</apexClass>
+        <apexClass>smdgActionTest</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>sdgController</apexClass>
+        <apexClass>smdgController</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>sdgControllerTest</apexClass>
+        <apexClass>smdgControllerTest</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>sdgDataProvider</apexClass>
+        <apexClass>smdgDataProvider</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>sdgDataProviderApexExample</apexClass>
+        <apexClass>smdgDataProviderApexExample</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>sdgDataProviderApexExampleTest</apexClass>
+        <apexClass>smdgDataProviderApexExampleTest</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>sdgDataProviderFactory</apexClass>
+        <apexClass>smdgDataProviderFactory</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>sdgDataProviderFactoryTest</apexClass>
+        <apexClass>smdgDataProviderFactoryTest</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>sdgDataProviderMetadata</apexClass>
+        <apexClass>smdgDataProviderMetadata</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>sdgDataProviderMetadataTest</apexClass>
+        <apexClass>smdgDataProviderMetadataTest</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>sdgDataProviderNative</apexClass>
+        <apexClass>smdgDataProviderNative</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>sdgDataProviderNativeTest</apexClass>
+        <apexClass>smdgDataProviderNativeTest</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>sdgDataProviderRelationship</apexClass>
+        <apexClass>smdgDataProviderRelationship</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>sdgDataProviderRelationshipTest</apexClass>
+        <apexClass>smdgDataProviderRelationshipTest</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>sdgDataProviderType</apexClass>
+        <apexClass>smdgDataProviderType</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>sdgDataTest</apexClass>
+        <apexClass>smdgDataTest</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>sdgDatabase</apexClass>
+        <apexClass>smdgDatabase</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>sdgDatabaseTest</apexClass>
+        <apexClass>smdgDatabaseTest</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>sdgDeprecatedException</apexClass>
+        <apexClass>smdgDeprecatedException</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>sdgDesigner</apexClass>
+        <apexClass>smdgDesigner</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>sdgDesignerField</apexClass>
+        <apexClass>smdgDesignerField</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>sdgDesignerTest</apexClass>
+        <apexClass>smdgDesignerTest</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>sdgEx</apexClass>
+        <apexClass>smdgEx</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>sdgExTest</apexClass>
+        <apexClass>smdgExTest</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>sdgException</apexClass>
+        <apexClass>smdgException</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>sdgExportFormat</apexClass>
+        <apexClass>smdgExportFormat</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>sdgFieldTest</apexClass>
+        <apexClass>smdgFieldTest</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>sdgFilterTest</apexClass>
+        <apexClass>smdgFilterTest</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>sdgIDataProvider</apexClass>
+        <apexClass>smdgIDataProvider</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>sdgImportExport</apexClass>
+        <apexClass>smdgImportExport</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>sdgImportExportTest</apexClass>
+        <apexClass>smdgImportExportTest</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>sdgInitialLoad</apexClass>
+        <apexClass>smdgInitialLoad</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>sdgLabels</apexClass>
+        <apexClass>smdgLabels</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>sdgLabelsTest</apexClass>
+        <apexClass>smdgLabelsTest</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>sdgMapper</apexClass>
+        <apexClass>smdgMapper</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>sdgMetadataDataProvider</apexClass>
+        <apexClass>smdgMetadataDataProvider</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>sdgNamespaceUtility</apexClass>
+        <apexClass>smdgNamespaceUtility</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>sdgNativeDataProvider</apexClass>
+        <apexClass>smdgNativeDataProvider</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>sdgObjectEventHandler</apexClass>
+        <apexClass>smdgObjectEventHandler</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>sdgObjectEventHandlerTest</apexClass>
+        <apexClass>smdgObjectEventHandlerTest</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>sdgPathParser</apexClass>
+        <apexClass>smdgPathParser</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>sdgPreferences</apexClass>
+        <apexClass>smdgPreferences</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>sdgProperties</apexClass>
+        <apexClass>smdgProperties</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>sdgPropertiesTest</apexClass>
+        <apexClass>smdgPropertiesTest</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>sdgQueryBuilder</apexClass>
+        <apexClass>smdgQueryBuilder</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>sdgQueryBuilderTest</apexClass>
+        <apexClass>smdgQueryBuilderTest</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>sdgQueryEngine</apexClass>
+        <apexClass>smdgQueryEngine</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>sdgQueryEngineTest</apexClass>
+        <apexClass>smdgQueryEngineTest</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>sdgRelationshipDataProvider</apexClass>
+        <apexClass>smdgRelationshipDataProvider</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>sdgRelationshipDataProviderTest</apexClass>
+        <apexClass>smdgRelationshipDataProviderTest</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>sdgSecurity</apexClass>
+        <apexClass>smdgSecurity</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>sdgSecurityTest</apexClass>
+        <apexClass>smdgSecurityTest</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>sdgTest</apexClass>
+        <apexClass>smdgTest</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>sdgTestData</apexClass>
+        <apexClass>smdgTestData</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>sdgTestOldDataProviders</apexClass>
+        <apexClass>smdgTestOldDataProviders</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>sdgVerification</apexClass>
+        <apexClass>smdgVerification</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>sdgVerificationTest</apexClass>
+        <apexClass>smdgVerificationTest</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <custom>false</custom>
     <fieldPermissions>
         <editable>false</editable>
-        <field>SDGDefaults__mdt.Definition__c</field>
+        <field>smdgDefaults__mdt.Definition__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>SDG_Action__c.Action_Type__c</field>
+        <field>smdg_Action__c.Action_Type__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>SDG_Action__c.Event_Payload__c</field>
+        <field>smdg_Action__c.Event_Payload__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>SDG_Action__c.Icon__c</field>
+        <field>smdg_Action__c.Icon__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>SDG_Action__c.Requires_Createable__c</field>
+        <field>smdg_Action__c.Requires_Createable__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>SDG_Action__c.Requires_Deletable__c</field>
+        <field>smdg_Action__c.Requires_Deletable__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>SDG_Action__c.Requires_Editable__c</field>
+        <field>smdg_Action__c.Requires_Editable__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>SDG_Field__c.FieldOrder__c</field>
+        <field>smdg_Field__c.FieldOrder__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>SDG_Field__c.Field_Style__c</field>
+        <field>smdg_Field__c.Field_Style__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>SDG_Field__c.Hide_Filter__c</field>
+        <field>smdg_Field__c.Hide_Filter__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>SDG_Field__c.Override_Label__c</field>
+        <field>smdg_Field__c.Override_Label__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>SDG_Field__c.is_valid_field__c</field>
+        <field>smdg_Field__c.is_valid_field__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>SDG__c.All_Rows__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>SDG__c.Debug__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>SDG__c.Default_Sort__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>SDG__c.DisableSharing__c</field>
+        <field>smdg__c.All_Rows__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>SDG__c.Enable_cache__c</field>
+        <field>smdg__c.Debug__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>SDG__c.Example_SOQL__c</field>
-        <readable>true</readable>
+        <field>smdg__c.Default_Sort__c</field>
+        <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>SDG__c.Filter__c</field>
+        <field>smdg__c.DisableSharing__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>SDG__c.Is_Valid__c</field>
+        <field>smdg__c.Enable_cache__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>SDG__c.Parent_Field_Name__c</field>
+        <field>smdg__c.Example_SOQL__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>smdg__c.Filter__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>smdg__c.Is_Valid__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>smdg__c.Parent_Field_Name__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>SDG__c.sObjectName__c</field>
+        <field>smdg__c.sObjectName__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>sdg_Preferences__c.Filters__c</field>
+        <field>smdg_Preferences__c.Filters__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>sdg_Preferences__c.User__c</field>
+        <field>smdg_Preferences__c.User__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>sdg_Preferences__c.sdgKey__c</field>
+        <field>smdg_Preferences__c.smdgKey__c</field>
         <readable>false</readable>
     </fieldPermissions>
     <layoutAssignments>
-        <layout>SDGDefaults__mdt-Main</layout>
+        <layout>smdgDefaults__mdt-Main</layout>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>SDG_Action__c-SDG Action Layout</layout>
+        <layout>smdg_Action__c-smdg Action Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>SDG_Field__c-Field Layout</layout>
+        <layout>smdg_Field__c-Field Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>SDG__c-SDG Layout</layout>
+        <layout>smdg__c-smdg Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>sdg_Preferences__c-Sortable Data Grid Preference Layout</layout>
+        <layout>smdg_Preferences__c-Sortable Data Grid Preference Layout</layout>
     </layoutAssignments>
     <loginIpRanges>
         <endAddress>255.255.255.255</endAddress>
@@ -440,7 +440,7 @@
         <allowEdit>true</allowEdit>
         <allowRead>true</allowRead>
         <modifyAllRecords>true</modifyAllRecords>
-        <object>SDG_Action__c</object>
+        <object>smdg_Action__c</object>
         <viewAllRecords>true</viewAllRecords>
     </objectPermissions>
     <objectPermissions>
@@ -449,7 +449,7 @@
         <allowEdit>true</allowEdit>
         <allowRead>true</allowRead>
         <modifyAllRecords>true</modifyAllRecords>
-        <object>SDG_Field__c</object>
+        <object>smdg_Field__c</object>
         <viewAllRecords>true</viewAllRecords>
     </objectPermissions>
     <objectPermissions>
@@ -458,7 +458,7 @@
         <allowEdit>true</allowEdit>
         <allowRead>true</allowRead>
         <modifyAllRecords>true</modifyAllRecords>
-        <object>SDG__c</object>
+        <object>smdg__c</object>
         <viewAllRecords>true</viewAllRecords>
     </objectPermissions>
     <objectPermissions>
@@ -467,11 +467,11 @@
         <allowEdit>true</allowEdit>
         <allowRead>true</allowRead>
         <modifyAllRecords>true</modifyAllRecords>
-        <object>sdg_Preferences__c</object>
+        <object>smdg_Preferences__c</object>
         <viewAllRecords>true</viewAllRecords>
     </objectPermissions>
     <tabVisibilities>
-        <tab>SDG__c</tab>
+        <tab>smdg__c</tab>
         <visibility>DefaultOn</visibility>
     </tabVisibilities>
     <userLicense>Salesforce</userLicense>

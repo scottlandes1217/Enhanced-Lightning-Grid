@@ -13,7 +13,7 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Required</behavior>
-                <field>SDG__c</field>
+                <field>smdg__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Required</behavior>

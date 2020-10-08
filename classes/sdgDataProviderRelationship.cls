@@ -4,27 +4,27 @@ Copyright © Felix Lindsay 21 November 2017
 flindsay@gmail.com
 All rights reserved
 */
-global with sharing class sdgDataProviderRelationship implements sdgIDataProvider {
+global with sharing class smdgDataProviderRelationship implements smdgIDataProvider {
     global static Boolean isUserSelectable()
     {
         return false;
     }
-    global static SDGResult getData(SDG CoreSDG, SDGRequest request)
+    global static smdgResult getData(smdg Coresmdg, smdgRequest request)
     {
-        SDGResult result =  sdgQueryEngine.getSDGResultRaw(CoreSDG, request);
+        smdgResult result =  smdgQueryEngine.getsmdgResultRaw(Coresmdg, request);
         return result;
     }
 
-        global   SDG LoadSDG(String SDGTag, String ParentRecordId)
+        global   smdg Loadsmdg(String smdgTag, String ParentRecordId)
     {
-        throw new SDGException('Branching logic incorrect in sdgDataProviderRelationship');
+        throw new smdgException('Branching logic incorrect in smdgDataProviderRelationship');
 
     }
-    global   SDG LoadSDG(String ParentRecordID, String RelationshipName, String FieldSetName)
+    global   smdg Loadsmdg(String ParentRecordID, String RelationshipName, String FieldSetName)
     {
 
         ID objId ;
-        system.debug('sdgDataProviderRelationship:LoadSDG:' + Relationshipname);
+        system.debug('smdgDataProviderRelationship:Loadsmdg:' + Relationshipname);
 
         Schema.SObjectType sobjectTypeParent;
         Schema.SObjectType sobjectTypeChild;
@@ -43,11 +43,11 @@ global with sharing class sdgDataProviderRelationship implements sdgIDataProvide
             sobjectTypeParent = objId.getSObjectType();
             descresult = sobjectTypeParent.getDescribe();
             cs = descResult.getChildRelationships();
-            system.debug('sdgDataProviderRelationship:LoadSDG: ParentObject:' + descresult.getName());
+            system.debug('smdgDataProviderRelationship:Loadsmdg: ParentObject:' + descresult.getName());
         }
         catch (exception e)
         {
-            throw new SDGException ('sdgDataProviderRelationship:LoadSDG: Unable to identify & describe the sObjectType of this record.  This component can only be configured to use a relationship when it exists on an Record Detail page.');
+            throw new smdgException ('smdgDataProviderRelationship:Loadsmdg: Unable to identify & describe the sObjectType of this record.  This component can only be configured to use a relationship when it exists on an Record Detail page.');
         }
 
         List<String> RelationshipNames = new List<STring>();
@@ -63,16 +63,16 @@ global with sharing class sdgDataProviderRelationship implements sdgIDataProvide
             {
                 relationship = c;
                 sObjectTypeChild = c.getChildsObject();
-                system.debug('sdgDataProviderRelationship:Found:' + sobjectTypeChild);
+                system.debug('smdgDataProviderRelationship:Found:' + sobjectTypeChild);
                 ParentFieldObj = c.getField();
             }
         }
 
         if(relationship == null)
         {
-            throw new SDGException('sdgDataProviderRelationship: Unable to get the Relationship details.  Valid values for RelationshipName for this record are: ' + String.join(RelationshipNames,', '));
+            throw new smdgException('smdgDataProviderRelationship: Unable to get the Relationship details.  Valid values for RelationshipName for this record are: ' + String.join(RelationshipNames,', '));
         }
-        SDG e = new  SDG( sObjectTypeChild.getDescribe().Name, ParentFieldObj.getDescribe().Name,  sObjectTypeChild.getDescribe().Name, '', '', sdgDataProviderType.Relationship.name() + ':' + Relationshipname + ':' + FieldSetName, false);
+        smdg e = new  smdg( sObjectTypeChild.getDescribe().Name, ParentFieldObj.getDescribe().Name,  sObjectTypeChild.getDescribe().Name, '', '', smdgDataProviderType.Relationship.name() + ':' + Relationshipname + ':' + FieldSetName, false);
 
         fsMap = sObjectTypeChild.getDescribe().FieldSets.getMap();
         for (string key : fsMap.keySet()) {
@@ -82,24 +82,24 @@ global with sharing class sdgDataProviderRelationship implements sdgIDataProvide
         if (fsMap.containsKey(fieldsetname))
         {
             fieldSetObj = fsMap.get(fieldsetname);
-            e.SDGFields = GetSDGFieldsFromFieldSet(fieldsetobj, sObjectTypeChild);
+            e.smdgFields = GetsmdgFieldsFromFieldSet(fieldsetobj, sObjectTypeChild);
         }
         else if (String.isblank(fieldsetname))
         {
-            e.SDGFields = GetSDGDefaultField(sObjectTypeChild);
+            e.smdgFields = GetsmdgDefaultField(sObjectTypeChild);
         }
         else
         {
-            throw new SDGException ('Unable to get fieldset and fields for this relationship type.  Valid values for the fieldsetname are: ' + STring.join(FieldsetNames,', '));
+            throw new smdgException ('Unable to get fieldset and fields for this relationship type.  Valid values for the fieldsetname are: ' + STring.join(FieldsetNames,', '));
         }
 
-        system.debug('sdgDataProviderRelationship:LoadSDG: sObjectName:' + e.sObjectName);
+        system.debug('smdgDataProviderRelationship:Loadsmdg: sObjectName:' + e.sObjectName);
         return e;
     }
-    private List<SDGField> GetSDGDefaultField(sObjectType sotChild)
+    private List<smdgField> GetsmdgDefaultField(sObjectType sotChild)
     {
-        List<SDGField> SDGFields = new List<SDGField>();
-        SDGField idfield;
+        List<smdgField> smdgFields = new List<smdgField>();
+        smdgField idfield;
 
         Map<String, Schema.SObjectField> FieldMap =  sotChild.getDescribe().fields.getMap();
         for(SObjectField sof: fieldmap.values())
@@ -107,59 +107,59 @@ global with sharing class sdgDataProviderRelationship implements sdgIDataProvide
             DescribeFieldResult dfr = sof.getDescribe();
             if (dfr.isNameField())
             {
-                SDGField namefield = sdgMapper.MapField(dfr,dfr.getName(), dfr.getName(), false,'', null, 1);
+                smdgField namefield = smdgMapper.MapField(dfr,dfr.getName(), dfr.getName(), false,'', null, 1);
                 if (namefield!=null)
                 {
-                    sdgFields.add(namefield);
+                    smdgFields.add(namefield);
                 }
             }
 
         }
-        if (sdgFields.size()==0)
+        if (smdgFields.size()==0)
         {
             //Didn't find a name so add the id:
-            Schema.DescribeFieldResult dr = new SDGPathParser('Id', sotChild).getDescribe();
+            Schema.DescribeFieldResult dr = new smdgPathParser('Id', sotChild).getDescribe();
 
-            SDGField newfield = sdgMapper.MapField(dr,'Id', 'Id', false,'', null, 1);
+            smdgField newfield = smdgMapper.MapField(dr,'Id', 'Id', false,'', null, 1);
             if (newfield!=null)
             {
-                SDGFields.add(newfield);
+                smdgFields.add(newfield);
             }
         }
 
-        return SDGFields;
+        return smdgFields;
     }
 
-    private  List<SDGField> GetSDGFieldsFromFieldSet(Schema.FieldSet fieldSetObj, SobjectType sotChild)
+    private  List<smdgField> GetsmdgFieldsFromFieldSet(Schema.FieldSet fieldSetObj, SobjectType sotChild)
     {
         List<Schema.FieldSetMember> fieldSetMemberList =  fieldSetObj.getFields();
-        List<SDGField> SDGFields = new List<SDGField>();
-        SDGField newfield;
+        List<smdgField> smdgFields = new List<smdgField>();
+        smdgField newfield;
         double iFieldCounter = 0;
         for (Schema.FieldSetMember fsm: fieldsetmemberList)
         {
             try
             {
-                Schema.DescribeFieldResult dr = new SDGPathParser(fsm.FieldPath, sotChild).getDescribe();
+                Schema.DescribeFieldResult dr = new smdgPathParser(fsm.FieldPath, sotChild).getDescribe();
                 //Only allow access if current field is user visible
                 if (dr.isAccessible())
                 {
                     iFieldCounter++;
-                    newfield = sdgMapper.MapField(dr,fsm.FieldPath, fsm.FieldPath, false,'', null, ifieldCounter);
+                    newfield = smdgMapper.MapField(dr,fsm.FieldPath, fsm.FieldPath, false,'', null, ifieldCounter);
                     if (newfield!=null)
                     {
-                        SDGFields.add(newfield);
+                        smdgFields.add(newfield);
                     }
                 }
             }
             catch (exception ex)
             {
                 //This error could be because the package is restricted so let user know this:
-                throw new sdgException('sdgDataProviderRelationship:GetSDGFieldsFromFieldSet Could not access fields listed in the field set - are restrictions on the package enabled?');
+                throw new smdgException('smdgDataProviderRelationship:GetsmdgFieldsFromFieldSet Could not access fields listed in the field set - are restrictions on the package enabled?');
             }
 
         }
-        return SDGFields;
+        return smdgFields;
     }
 
 }

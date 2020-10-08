@@ -4,19 +4,19 @@ Copyright © Felix Lindsay 21 November 2017
 flindsay@gmail.com
 All rights reserved
 */
-global with sharing class SDGFilter
+global with sharing class smdgFilter
 {
-    global string SDGFieldID;
+    global string smdgFieldID;
     global string FilterOperator;
     global string FilterValue;
 
-global SDGFilter()
+global smdgFilter()
 {
 
 }
-    global SDGFilter(string SDGFieldID, string FilterOperator, string FilterValue)
+    global smdgFilter(string smdgFieldID, string FilterOperator, string FilterValue)
     {
-        this.SDGFieldID = SDGFieldID;
+        this.smdgFieldID = smdgFieldID;
         this.FilterOperator = FilterOperator;
         this.FilterValue = FilterValue;
     }

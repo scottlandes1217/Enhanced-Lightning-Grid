@@ -4,16 +4,16 @@ Copyright © Felix Lindsay 21 November 2017
 flindsay@gmail.com
 All rights reserved
 */
-global with sharing class sdgNativeDataProvider implements sdgDataProvider {
+global with sharing class smdgNativeDataProvider implements smdgDataProvider {
 
-        global static SDGResult getData(SDG CoreSDG, SDGRequest request)
+        global static smdgResult getData(smdg Coresmdg, smdgRequest request)
     {
-        throw new sdgDeprecatedException('sdgNativeDataProvider is Deprecated');
+        throw new smdgDeprecatedException('smdgNativeDataProvider is Deprecated');
     }
 
-     global SDG LoadSDG(SDG coreSDG)
+     global smdg Loadsmdg(smdg coresmdg)
     {
-         throw new sdgDeprecatedException('sdgNativeDataProvider is Deprecated');
+         throw new smdgDeprecatedException('smdgNativeDataProvider is Deprecated');
 
     }
 

@@ -9,7 +9,7 @@
         <layoutColumns>
             <layoutItems>
                 <behavior>Required</behavior>
-                <field>sdg__c</field>
+                <field>smdg__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Required</behavior>

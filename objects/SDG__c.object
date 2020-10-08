@@ -180,13 +180,13 @@
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>SDG_Tag__c</fullName>
+        <fullName>smdg_Tag__c</fullName>
         <caseSensitive>false</caseSensitive>
         <deprecated>false</deprecated>
         <encryptionScheme>None</encryptionScheme>
         <externalId>false</externalId>
         <inlineHelpText>Unique name for the grid</inlineHelpText>
-        <label>SDG Tag</label>
+        <label>smdg Tag</label>
         <length>80</length>
         <required>true</required>
         <trackTrending>false</trackTrending>
@@ -217,7 +217,7 @@
     </listViews>
     <nameField>
         <encryptionScheme>None</encryptionScheme>
-        <label>SDG Name</label>
+        <label>smdg Name</label>
         <type>Text</type>
     </nameField>
     <pluralLabel>Sortable Data Grids</pluralLabel>

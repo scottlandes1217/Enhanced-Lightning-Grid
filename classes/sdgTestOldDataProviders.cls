@@ -5,7 +5,7 @@ flindsay@gmail.com
 All rights reserved
 */
 @istest
-public class sdgTestOldDataProviders {
+public class smdgTestOldDataProviders {
     private static testmethod void TestMeta()
     {
         Boolean isError = false;
@@ -13,29 +13,29 @@ public class sdgTestOldDataProviders {
         {
 
 
-            sdgMetadataDataProvider.getData(null,null);
+            smdgMetadataDataProvider.getData(null,null);
 
         }
-        catch(sdgDeprecatedException ex)
+        catch(smdgDeprecatedException ex)
         {
             isError = true;
         }
-        system.assertEquals(true, isError, 'sdgTestOldDataProviders:TestMeta:GetData: Expected sdgDeprecatedException');
+        system.assertEquals(true, isError, 'smdgTestOldDataProviders:TestMeta:GetData: Expected smdgDeprecatedException');
 
         isError = false;
 
         try
         {
 
-            sdgMetadataDataProvider mdp = new sdgMetadataDataProvider();
-            mdp.LoadSDG(null);
+            smdgMetadataDataProvider mdp = new smdgMetadataDataProvider();
+            mdp.Loadsmdg(null);
 
         }
-        catch(sdgDeprecatedException ex)
+        catch(smdgDeprecatedException ex)
         {
             isError = true;
         }
-        system.assertEquals(true, isError, 'sdgTestOldDataProviders:TestMeta:LoadSDG: Expected sdgDeprecatedException');
+        system.assertEquals(true, isError, 'smdgTestOldDataProviders:TestMeta:Loadsmdg: Expected smdgDeprecatedException');
     }
 
 
@@ -46,44 +46,44 @@ public class sdgTestOldDataProviders {
         {
 
 
-            sdgRelationshipDataProvider.getData(null,null);
+            smdgRelationshipDataProvider.getData(null,null);
 
         }
-        catch(sdgDeprecatedException ex)
+        catch(smdgDeprecatedException ex)
         {
             isError = true;
         }
-        system.assertEquals(true, isError, 'sdgTestOldDataProviders:TestRelationship:GetData: Expected sdgDeprecatedException');
+        system.assertEquals(true, isError, 'smdgTestOldDataProviders:TestRelationship:GetData: Expected smdgDeprecatedException');
 
         isError = false;
 
         try
         {
 
-            sdgRelationshipDataProvider dp = new sdgRelationshipDataProvider();
-            dp.LoadSDG(null);
+            smdgRelationshipDataProvider dp = new smdgRelationshipDataProvider();
+            dp.Loadsmdg(null);
 
         }
-        catch(sdgDeprecatedException ex)
+        catch(smdgDeprecatedException ex)
         {
             isError = true;
         }
-        system.assertEquals(true, isError, 'sdgTestOldDataProviders:TestRelationship:LoadSDG: Expected sdgDeprecatedException');
+        system.assertEquals(true, isError, 'smdgTestOldDataProviders:TestRelationship:Loadsmdg: Expected smdgDeprecatedException');
 
         isError = false;
 
         try
         {
 
-            sdgRelationshipDataProvider dp = new sdgRelationshipDataProvider();
-            dp.LoadSDG(null, null, null);
+            smdgRelationshipDataProvider dp = new smdgRelationshipDataProvider();
+            dp.Loadsmdg(null, null, null);
 
         }
-        catch(sdgDeprecatedException ex)
+        catch(smdgDeprecatedException ex)
         {
             isError = true;
         }
-        system.assertEquals(true, isError, 'sdgTestOldDataProviders:TestRelationship:LoadSDG 3Params: Expected sdgDeprecatedException');
+        system.assertEquals(true, isError, 'smdgTestOldDataProviders:TestRelationship:Loadsmdg 3Params: Expected smdgDeprecatedException');
 
     }
     private static testmethod void TestCustom()
@@ -96,11 +96,11 @@ public class sdgTestOldDataProviders {
             customDataPRoviderExample.getData(null,null);
 
         }
-        catch(sdgDeprecatedException ex)
+        catch(smdgDeprecatedException ex)
         {
             isError = true;
         }
-        system.assertEquals(true, isError, 'sdgTestOldDataProviders:TestCustom:GetData: Expected sdgDeprecatedException');
+        system.assertEquals(true, isError, 'smdgTestOldDataProviders:TestCustom:GetData: Expected smdgDeprecatedException');
 
         isError = false;
 
@@ -108,14 +108,14 @@ public class sdgTestOldDataProviders {
         {
 
             customDataPRoviderExample dp = new customDataPRoviderExample();
-            dp.LoadSDG(null);
+            dp.Loadsmdg(null);
 
         }
-        catch(sdgDeprecatedException ex)
+        catch(smdgDeprecatedException ex)
         {
             isError = true;
         }
-        system.assertEquals(true, isError, 'sdgTestOldDataProviders:TestCustom:LoadSDG: Expected sdgDeprecatedException');
+        system.assertEquals(true, isError, 'smdgTestOldDataProviders:TestCustom:Loadsmdg: Expected smdgDeprecatedException');
     }
 
 
@@ -126,28 +126,28 @@ public class sdgTestOldDataProviders {
         {
 
 
-            sdgNativeDataProvider.getData(null,null);
+            smdgNativeDataProvider.getData(null,null);
 
         }
-        catch(sdgDeprecatedException ex)
+        catch(smdgDeprecatedException ex)
         {
             isError = true;
         }
-        system.assertEquals(true, isError, 'sdgTestOldDataProviders:TestNative:GetData: Expected sdgDeprecatedException');
+        system.assertEquals(true, isError, 'smdgTestOldDataProviders:TestNative:GetData: Expected smdgDeprecatedException');
 
         isError = false;
 
         try
         {
 
-            sdgNativeDataProvider dp = new sdgNativeDataProvider();
-            dp.LoadSDG(null);
+            smdgNativeDataProvider dp = new smdgNativeDataProvider();
+            dp.Loadsmdg(null);
 
         }
-        catch(sdgDeprecatedException ex)
+        catch(smdgDeprecatedException ex)
         {
             isError = true;
         }
-        system.assertEquals(true, isError, 'sdgTestOldDataProviders:TestNative:LoadSDG: Expected sdgDeprecatedException');
+        system.assertEquals(true, isError, 'smdgTestOldDataProviders:TestNative:Loadsmdg: Expected smdgDeprecatedException');
     }
 }

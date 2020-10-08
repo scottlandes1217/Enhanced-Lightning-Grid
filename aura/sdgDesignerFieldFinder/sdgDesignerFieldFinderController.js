@@ -19,7 +19,7 @@
         var action = component.get("c.GetNewFieldOrder");
         action.setAbortable();
         action.setParams({
-            "SDGRecordId": component.get("v.recordId")
+            "smdgRecordId": component.get("v.recordId")
         });
 
         action.setCallback(this, function (actionResult) {
@@ -31,13 +31,13 @@
                 var defaultFieldValues = {};
 
                 var namespace = component.get("v.namespace");
-                defaultFieldValues[namespace + "sdg__c"] = component.get("v.recordId");
+                defaultFieldValues[namespace + "smdg__c"] = component.get("v.recordId");
                 defaultFieldValues[namespace + "APIName__c"] = component.get("v.selectedPath");
                 defaultFieldValues[namespace + "FieldOrder__c"] = newID;
 
                 createRecordEvent.setParams(
                     {
-                        "entityApiName": namespace + "SDG_Field__c",
+                        "entityApiName": namespace + "smdg_Field__c",
                         "defaultFieldValues": defaultFieldValues,
                         "navigationLocation": "RELATED_LIST"
                     }

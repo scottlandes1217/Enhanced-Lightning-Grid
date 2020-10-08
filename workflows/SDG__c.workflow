@@ -2,8 +2,8 @@
 <Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
     <fieldUpdates>
         <fullName>Set_Tag</fullName>
-        <field>SDG_Tag__c</field>
-        <formula>SDG_Tag__c</formula>
+        <field>smdg_Tag__c</field>
+        <formula>smdg_Tag__c</formula>
         <name>Set Tag</name>
         <notifyAssignee>false</notifyAssignee>
         <operation>Formula</operation>

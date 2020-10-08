@@ -1,3 +1,3 @@
-public class sdgDesignerField {
+public class smdgDesignerField {
 
 }

@@ -4,9 +4,9 @@ Copyright © Felix Lindsay 21 November 2017
 flindsay@gmail.com
 All rights reserved
 */
-global interface sdgIDataProvider {
+global interface smdgIDataProvider {
 
-	 SDGResult getData(SDG coreSDG, SDGRequest request);
-     SDG LoadSDG(String SDGTag, String ParentRecordId);
+	 smdgResult getData(smdg coresmdg, smdgRequest request);
+     smdg Loadsmdg(String smdgTag, String ParentRecordId);
      Boolean isUserSelectable();
 }

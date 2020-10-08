@@ -1,4 +1,4 @@
 @isTest 
-public class sdgRelationshipDataProviderTest {
+public class smdgRelationshipDataProviderTest {
    
 }

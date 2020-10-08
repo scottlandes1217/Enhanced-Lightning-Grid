@@ -4,7 +4,7 @@ Copyright © Felix Lindsay 21 November 2017
 flindsay@gmail.com
 All rights reserved
 */
-global with sharing class SDGAction  implements Comparable 
+global with sharing class smdgAction  implements Comparable 
 {
     global string Id;
     global string Label;
@@ -14,11 +14,11 @@ global with sharing class SDGAction  implements Comparable
     global string Icon;
     global integer actionOrder;
 
-    global sdgAction()
+    global smdgAction()
     {
     }
   
-    global sdgAction(String Id, String Label, String Event, String Type, String Payload, String Icon)
+    global smdgAction(String Id, String Label, String Event, String Type, String Payload, String Icon)
     {
         this.Id = Id;
         this.Label = Label;
@@ -27,7 +27,7 @@ global with sharing class SDGAction  implements Comparable
         this.Payload = Payload;
         this.Icon = Icon;
     }
-    global sdgAction(String Id, String Label, String Event, String Type, String Payload, String Icon, integer actionorder)
+    global smdgAction(String Id, String Label, String Event, String Type, String Payload, String Icon, integer actionorder)
     {
         this.Id = Id;
         this.Label = Label;
@@ -40,7 +40,7 @@ global with sharing class SDGAction  implements Comparable
     // Compare action based on the actionorder.
     public Integer compareTo(Object compareTo) {
         // Cast argument to wrapper
-        sdgAction compareToAction = (sdgAction)compareTo;
+        smdgAction compareToAction = (smdgAction)compareTo;
         
         // The return value of 0 indicates that both elements are equal.
         Integer returnValue = 0;

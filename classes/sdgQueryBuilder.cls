@@ -1,5 +1,5 @@
-global with sharing class sdgQueryBuilder {
-public  class sdgInvalidFilterException extends sdgException {}
+global with sharing class smdgQueryBuilder {
+public  class smdgInvalidFilterException extends smdgException {}
     
 global static string BuildSortClause (String sortColumn, String sortOrder){
     system.debug('Sort Order: ' + SortOrder);
@@ -54,7 +54,7 @@ global static string BuildFilterClause(String ColumnName, String FieldType, Stri
                 Set<String> booleanvalues = new set<String>{'true', 'false', ''};
                     if (!booleanvalues.contains(filtervalue))
                 {
-                    throw new SDGInvalidFilterException('Invalid date filter value provided');
+                    throw new smdgInvalidFilterException('Invalid date filter value provided');
                 }
                 if (filtervalue=='true')
                 {
@@ -150,7 +150,7 @@ global static string BuildFilterClause(String ColumnName, String FieldType, Stri
                             }
                             catch (Exception ex)
                             {
-                                Throw new SDGInvalidFilterException('Invalid date provided');
+                                Throw new smdgInvalidFilterException('Invalid date provided');
 
                             }
                         }

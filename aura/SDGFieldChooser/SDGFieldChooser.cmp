@@ -1,4 +1,4 @@
-<aura:component controller="sdgDesigner" implements="force:hasRecordId">
+<aura:component controller="smdgDesigner" implements="force:hasRecordId">
     <aura:attribute name="rootObjectType" type="string" />
     <aura:attribute name="recordId" type="Id" />
 

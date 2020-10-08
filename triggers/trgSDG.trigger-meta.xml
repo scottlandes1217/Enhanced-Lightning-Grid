@@ -2,5 +2,5 @@
 <ApexTrigger xmlns="http://soap.sforce.com/2006/04/metadata">
     <apiVersion>41.0</apiVersion>
     <status>Active</status>
-    <targetObject>SDG__c</targetObject>
+    <targetObject>smdg__c</targetObject>
 </ApexTrigger>

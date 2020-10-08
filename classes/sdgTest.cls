@@ -5,37 +5,37 @@ flindsay@gmail.com
 All rights reserved
 */
 @isTest
-public class sdgTest {
+public class smdgTest {
 
     public static testmethod void TestConstructorNoParms()
     {
         Boolean isError = false;
         try
         {
-            SDG s = new SDG();
+            smdg s = new smdg();
         }
         catch(exception ex)
         {
             isError = true;
         }
-        system.assertEquals(true, iserror, 'sdgTest:TestConstructorNoParms');
+        system.assertEquals(true, iserror, 'smdgTest:TestConstructorNoParms');
 
     }
     public static testmethod void TestConstructorOneParms()
     {
         Boolean isError = false;
         string teststring = 'teapot';
-        SDG s;
+        smdg s;
         try
         {
-            s = new SDG(teststring);
+            s = new smdg(teststring);
         }
         catch(exception ex)
         {
             isError = true;
         }
-        system.assertEquals(false, iserror, 'sdgTest:TestConstructorOneParms failure');
-        system.assertEquals(teststring, s.internaldata.sUniqueKey, 'sdgTest:TestConstructorOneParms:InternalUniqueID missing');
+        system.assertEquals(false, iserror, 'smdgTest:TestConstructorOneParms failure');
+        system.assertEquals(teststring, s.internaldata.sUniqueKey, 'smdgTest:TestConstructorOneParms:InternalUniqueID missing');
 
     }
     public static testmethod void TestConstructorSixParms()
@@ -43,19 +43,19 @@ public class sdgTest {
         Boolean isError = false;
         string teststring = 'teapot';
 
-        SDG s;
+        smdg s;
         try
         {
-            s = new SDG('abc', '', 'Account', '', '',teststring);
-     		// SDG(String objectname, String ParentFieldName, String sObjectName, String sFilter, String sDefaultSort, String sUniqueKey)
+            s = new smdg('abc', '', 'Account', '', '',teststring);
+     		// smdg(String objectname, String ParentFieldName, String sObjectName, String sFilter, String sDefaultSort, String sUniqueKey)
 
         }
         catch(exception ex)
         {
             isError = true;
         }
-        system.assertEquals(false, iserror, 'sdgTest:TestConstructorSixParms failure');
-        system.assertEquals(teststring, s.internaldata.sUniqueKey, 'sdgTest:TestConstructorSixParms:InternalUniqueID missing');
+        system.assertEquals(false, iserror, 'smdgTest:TestConstructorSixParms failure');
+        system.assertEquals(teststring, s.internaldata.sUniqueKey, 'smdgTest:TestConstructorSixParms:InternalUniqueID missing');
 
     }
     public static testmethod void TestConstructorSevenParms()
@@ -63,19 +63,19 @@ public class sdgTest {
         Boolean isError = false;
         string teststring = 'teapot';
 
-        SDG s;
+        smdg s;
         try
         {
-            s = new SDG('abc', '', 'Account', '', '',teststring, false);
-     		// SDG(String objectname, String ParentFieldName, String sObjectName, String sFilter, String sDefaultSort, String sUniqueKey)
+            s = new smdg('abc', '', 'Account', '', '',teststring, false);
+     		// smdg(String objectname, String ParentFieldName, String sObjectName, String sFilter, String sDefaultSort, String sUniqueKey)
 
         }
         catch(exception ex)
         {
             isError = true;
         }
-        system.assertEquals(false, iserror, 'sdgTest:TestConstructorSevenParms failure');
-        system.assertEquals(teststring, s.internaldata.sUniqueKey, 'sdgTest:TestConstructorSevenParms:InternalUniqueID missing');
+        system.assertEquals(false, iserror, 'smdgTest:TestConstructorSevenParms failure');
+        system.assertEquals(teststring, s.internaldata.sUniqueKey, 'smdgTest:TestConstructorSevenParms:InternalUniqueID missing');
 
     }
 

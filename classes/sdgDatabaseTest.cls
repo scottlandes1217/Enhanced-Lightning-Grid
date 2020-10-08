@@ -6,8 +6,8 @@ All rights reserved
 */
 @isTest
 
-public with sharing class sdgDatabaseTest {
-    static testMethod void GetSDGTest()
+public with sharing class smdgDatabaseTest {
+    static testMethod void GetsmdgTest()
     {
             
     }

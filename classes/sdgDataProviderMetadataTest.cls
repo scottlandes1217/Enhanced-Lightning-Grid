@@ -5,46 +5,46 @@ flindsay@gmail.com
 All rights reserved
 */
 @isTest
-public with sharing class sdgDataProviderMetadataTest {
+public with sharing class smdgDataProviderMetadataTest {
 
     private static testmethod void isSelectableTest()
     {
-        system.assertequals(false, sdgDataProviderMetadata.isUserSelectable(), 'sdgDataProviderMetadataTest:isUserSelectable Should not be userSelectable');
+        system.assertequals(false, smdgDataProviderMetadata.isUserSelectable(), 'smdgDataProviderMetadataTest:isUserSelectable Should not be userSelectable');
 
     }
-    static testMethod void loadSDG()
+    static testMethod void loadsmdg()
     {
-        string tag = sdgDataProviderType.Metadata.name() + ':SDG_Designer_Fields';
+        string tag = smdgDataProviderType.Metadata.name() + ':smdg_Designer_Fields';
 
         test.startTest();
         //not actually interested in whether this works - only the structure
-        SDG s = sdgDataProviderFactory.LoadSDG(tag,'','','');
-        system.assertNotEquals(null, s, 'sdgMetadataDataProviderTest:loadSDG returned null');
+        smdg s = smdgDataProviderFactory.Loadsmdg(tag,'','','');
+        system.assertNotEquals(null, s, 'smdgMetadataDataProviderTest:loadsmdg returned null');
 
         system.debug(json.serialize(s));
-        system.assertNotEquals(0, s.SDGFields.size(), 'sdgMetadataDataProviderTest:loadSDG:Fields on example data provider');
-        system.assertNotEquals(0, s.SDGActions.size(), 'sdgMetadataDataProviderTest:loadSDG:Actions on example data provider');
+        system.assertNotEquals(0, s.smdgFields.size(), 'smdgMetadataDataProviderTest:loadsmdg:Fields on example data provider');
+        system.assertNotEquals(0, s.smdgActions.size(), 'smdgMetadataDataProviderTest:loadsmdg:Actions on example data provider');
         test.stopTest();
 
     }
     static testMethod void getData()
     {
-        string tag = sdgDataProviderType.Metadata.name() + ':SDG_Designer_Fields';
+        string tag = smdgDataProviderType.Metadata.name() + ':smdg_Designer_Fields';
 
         test.startTest();
 
-        SDGREquest req = new SDGREquest();
-        req.SDGTag = tag;
+        smdgREquest req = new smdgREquest();
+        req.smdgTag = tag;
         req.pageid=1;
         req.pagesize=5;
 
-        sdgresult sr = sdgDataProviderFactory.getData(req);
-        system.assertEquals(0, sr.FullQueryCount, 'sdgMetadataDataProviderTest:getData:Fields: No Fields to load');
+        smdgresult sr = smdgDataProviderFactory.getData(req);
+        system.assertEquals(0, sr.FullQueryCount, 'smdgMetadataDataProviderTest:getData:Fields: No Fields to load');
 
-        req.ParentRecordID = sdgTestData.GenerateTestSampleData();
+        req.ParentRecordID = smdgTestData.GenerateTestSampleData();
 
-        sdgresult sr2 = sdgDataProviderFactory.getData(req);
-        system.assertNotEquals(0, sr2.FullQueryCount, 'sdgMetadataDataProviderTest:getData:Fields: Fields to load expected');
+        smdgresult sr2 = smdgDataProviderFactory.getData(req);
+        system.assertNotEquals(0, sr2.FullQueryCount, 'smdgMetadataDataProviderTest:getData:Fields: Fields to load expected');
 
         test.stopTest();
 

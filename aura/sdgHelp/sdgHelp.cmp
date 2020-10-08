@@ -61,7 +61,7 @@
                     <tr class="slds-hint-parent"><td class="slds-cell-wrap">Requires Editable</td><td class="slds-cell-wrap">Only show if the current user has Edit rights for the sObjectName type on Sortable Data Grid record.</td><td class="slds-cell-wrap"></td></tr>
                     <tr class="slds-hint-parent"><td class="slds-cell-wrap">Requires Deletable</td><td class="slds-cell-wrap">Only show if the current user has Deletable rights for the sObjectName type on Sortable Data Grid record.</td><td class="slds-cell-wrap"></td></tr>
                     <tr class="slds-hint-parent"><td class="slds-cell-wrap">Action Type</td><td class="slds-cell-wrap">Set the display style for the button.  List buttons cannot reference the selected row.  </td><td class="slds-cell-wrap">List/Row</td></tr>
-                    <tr class="slds-hint-parent"><td class="slds-cell-wrap">Event payload</td><td class="slds-cell-wrap">Javascript object payload for event.  Supports merging of sdgField values that are on the grid - using delimited #fieldname# syntax.  Also supports #ids# (for multiple rows) and #parentrecordId# for host page record Id</td><td class="slds-cell-wrap">{ <br/>
+                    <tr class="slds-hint-parent"><td class="slds-cell-wrap">Event payload</td><td class="slds-cell-wrap">Javascript object payload for event.  Supports merging of smdgField values that are on the grid - using delimited #fieldname# syntax.  Also supports #ids# (for multiple rows) and #parentrecordId# for host page record Id</td><td class="slds-cell-wrap">{ <br/>
                         "recordId":"#Id#",
                         "somethingelse" : #parentrecordId#<br/>
                         }</td></tr>

@@ -5,8 +5,8 @@ flindsay@gmail.com
 All rights reserved
 */
 @istest
-public class sdgExTest {
-public  class NotsdgException extends Exception {}
+public class smdgExTest {
+public  class NotsmdgException extends Exception {}
 
 private static testmethod void RaiseNew()
     {
@@ -14,14 +14,14 @@ private static testmethod void RaiseNew()
 
         try
         {
-            NeedToRaiseNew = sdgEx.raiseNew(new NotsdgException('test'));
+            NeedToRaiseNew = smdgEx.raiseNew(new NotsmdgException('test'));
 
         }
         catch(Exception ex)
         {
 
         }
-        system.assertEquals(true, NeedToRaiseNew, 'sdgEx:RaiseNewTrue: Expected to be told to raise sdgException');
+        system.assertEquals(true, NeedToRaiseNew, 'smdgEx:RaiseNewTrue: Expected to be told to raise smdgException');
     }
     private static testmethod void RaiseNew2()
     {
@@ -29,15 +29,15 @@ private static testmethod void RaiseNew()
 
         try
         {
-            sdgEx.raiseNew(new sdgException('test'));
+            smdgEx.raiseNew(new smdgException('test'));
 
         }
         catch(Exception ex)
         {
 
-                if (ex instanceof sdgException)
+                if (ex instanceof smdgException)
                     isError = true;
         }
-        system.assertEquals(true, isError, 'sdgEx:RaiseNewTrue: Expected sdgException');
+        system.assertEquals(true, isError, 'smdgEx:RaiseNewTrue: Expected smdgException');
     }
 }

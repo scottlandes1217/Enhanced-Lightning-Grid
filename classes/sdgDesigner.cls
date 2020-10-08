@@ -4,23 +4,23 @@ Copyright © Felix Lindsay 21 November 2017
 flindsay@gmail.com
 All rights reserved
 */
-public with sharing class sdgDesigner {
+public with sharing class smdgDesigner {
     @AuraEnabled
     public static string GetNamespace()
     {
-        return sdgNamespaceUtility.GetNamespace();
+        return smdgNamespaceUtility.GetNamespace();
     }
     
     @AuraEnabled
-    public static Integer GetNewFieldOrder( String SDGRecordId)
+    public static Integer GetNewFieldOrder( String smdgRecordId)
     {
         Integer retvalue = 1;
         try
         {
             
-            sdgSecurity.CanQuery('SDGDesigner:GetNewFieldOrder', 'SDG_Field__c', 'FieldOrder__c', '', sdgNamespaceUtility.GetNamespace(),true);
+            smdgSecurity.CanQuery('smdgDesigner:GetNewFieldOrder', 'smdg_Field__c', 'FieldOrder__c', '', smdgNamespaceUtility.GetNamespace(),true);
             
-            AggregateResult[] groupedResults = [SELECT Max(FieldOrder__c) current FROM SDG_Field__c where sdg__c = : SDGRecordId];
+            AggregateResult[] groupedResults = [SELECT Max(FieldOrder__c) current FROM smdg_Field__c where smdg__c = : smdgRecordId];
             Object maxValueObj = groupedResults[0].get('current');
             Integer maxValueInt = Integer.valueOf(maxValueObj);
             retvalue =  maxValueInt + 1;
@@ -34,18 +34,18 @@ public with sharing class sdgDesigner {
     }
     
     @AuraEnabled
-    public static List<AuraFieldSelectOption> GetSObjectFields(String sObjectType, String SDGRecordId)
+    public static List<AuraFieldSelectOption> GetSObjectFields(String sObjectType, String smdgRecordId)
     {
         List<AuraFieldSelectOption> objects = new List<AuraFieldSelectOption>();
         objects.add(new AuraFieldSelectOption('','', ''));
         
         try
         {
-            if (String.isNotBlank(SDGRecordId) && STring.isBlank(sObjectType))
+            if (String.isNotBlank(smdgRecordId) && STring.isBlank(sObjectType))
             {
-                Id recordId = (Id)SDGRecordId;
-                SDG__c sdg = [select id, sObjectName__c from sdg__c where id = :recordId limit 1];
-                sObjectType =sdg.sObjectName__c;
+                Id recordId = (Id)smdgRecordId;
+                smdg__c smdg = [select id, sObjectName__c from smdg__c where id = :recordId limit 1];
+                sObjectType =smdg.sObjectName__c;
             }
             
             Schema.DescribeSObjectResult[] descResult = Schema.describeSObjects(new String[]{sObjectType});

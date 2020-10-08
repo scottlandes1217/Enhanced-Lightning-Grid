@@ -1,4 +1,4 @@
-public with sharing class SDGData {
+public with sharing class smdgData {
     
  
 }

@@ -4,20 +4,20 @@ Copyright © Felix Lindsay 21 November 2017
 flindsay@gmail.com
 All rights reserved
 */
-public with sharing class sdgController {
+public with sharing class smdgController {
 
 
     @AuraEnabled
     public static string GetNamespace()
     {
-        return JSON.serialize( sdgNamespaceUtility.GetNamespace());
+        return JSON.serialize( smdgNamespaceUtility.GetNamespace());
     }
 
     @AuraEnabled
-    public static String GetSDGInitialLoad(String ParentRecordID, String SDGTag, String RelationshipName, String FieldSetName, integer DefaultPageSize)
+    public static String GetsmdgInitialLoad(String ParentRecordID, String smdgTag, String RelationshipName, String FieldSetName, integer DefaultPageSize)
     {
         //Create response object
-        SDGInitialLoad initial = new SDGInitialLoad();
+        smdgInitialLoad initial = new smdgInitialLoad();
         // Salesforce bug with Lightning serializer requires re-casting this value
         //https://salesforce.stackexchange.com/questions/108355/limit-expression-must-be-of-type-integer-error-when-using-apex-variable-in-soq/108423#108423
         try {
@@ -28,34 +28,34 @@ public with sharing class sdgController {
             throw new AuraHandledException('Invalid DefaultPageSize provided');
         }
         
-        system.debug('sdgController:GetSDGInitialLoad:' + ParentRecordID + ':' + SDGTag + ':' + RelationshipName + ':' + FieldSetName);
+        system.debug('smdgController:GetsmdgInitialLoad:' + ParentRecordID + ':' + smdgTag + ':' + RelationshipName + ':' + FieldSetName);
         try
         {
-            SDG newSDG = SDGDataProviderFactory.LoadSDG(SDGTag, ParentRecordId, RelationshipName, FieldsetName);
+            smdg newsmdg = smdgDataProviderFactory.Loadsmdg(smdgTag, ParentRecordId, RelationshipName, FieldsetName);
             //Create a full request:
-            SDGRequest req = new SDGRequest();
+            smdgRequest req = new smdgRequest();
 
-            if (!String.isBlank(SDGTag))
+            if (!String.isBlank(smdgTag))
             {
-            	req = sdgPreferences.GenerateRequestWithFilters(newSDG, ParentRecordID, SDGTag);
+            	req = smdgPreferences.GenerateRequestWithFilters(newsmdg, ParentRecordID, smdgTag);
             } 
             req.RelationshipName = RelationshipName;
             req.FieldSetName = FieldSetName;
             req.ParentRecordID = ParentRecordID;
-            req.SDGTag = SDGTag;
+            req.smdgTag = smdgTag;
             req.PageSize = DefaultPageSize;
 
-            SDGResult result = sdgDataProviderFactory.getData( req, newSDG);
+            smdgResult result = smdgDataProviderFactory.getData( req, newsmdg);
             //Blank out the internal data to save payload:
-            newSDG.InternalData = null;
+            newsmdg.InternalData = null;
 
             //build response object:
-            initial.SDGObject = newSDG;
+            initial.smdgObject = newsmdg;
             initial.results = result;
             initial.isError = false;
         }
         
-        catch (SDGException ex)
+        catch (smdgException ex)
         {
             initial.ErrorMessage = ex.getMessage();
             initial.isError = true;
@@ -69,24 +69,24 @@ public with sharing class sdgController {
     }
 
     @AuraEnabled
-    public static string getSDGResult(String jsonrequest)
+    public static string getsmdgResult(String jsonrequest)
     {
-        SDGResult results = new SDGResult();
+        smdgResult results = new smdgResult();
 
         String resultsstring = '';
         try
         {
-            system.debug('sdgController:getSDGResult: getting request');
-            SDGRequest request = (SDGRequest)JSON.deserialize(jsonrequest, SDGRequest.class);
-            system.debug('sdgController:getSDGResult: getting result');
+            system.debug('smdgController:getsmdgResult: getting request');
+            smdgRequest request = (smdgRequest)JSON.deserialize(jsonrequest, smdgRequest.class);
+            system.debug('smdgController:getsmdgResult: getting result');
 
-            results = sdgDataProviderFactory.getData(request);
+            results = smdgDataProviderFactory.getData(request);
 
             results.isError=false;
         }
         catch (Exception ex)
         {
-            system.debug('sdgController:getSDGResult: Exception: ' + ex.getMessage() );
+            system.debug('smdgController:getsmdgResult: Exception: ' + ex.getMessage() );
             results.ErrorMessage = ex.getMessage();
             results.isError = true;
         }

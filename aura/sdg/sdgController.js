@@ -29,11 +29,11 @@
         if (TargetSize == 'SMALL')
             component.set("v.filtersize", 12);
 
-        helper.getSDG(component);
+        helper.getsmdg(component);
         helper.getNamespace(component);
     },
     handleObjectManagerEvent: function (component, event, helper) {
-        alert('caught in sdg');
+        alert('caught in smdg');
     },
     paging: function (component, event, helper) {
         component.set("v.isPaging", true);
@@ -42,7 +42,7 @@
     CreateNew: function (component, event, helper) {
         var navEvt = $A.get("e.force:createRecord");
 
-        var objname = component.get("v.SDG").sObjectName;
+        var objname = component.get("v.smdg").sObjectName;
         navEvt.setParams({
             "entityApiName": objname,
             "recordTypeId": null
@@ -56,15 +56,15 @@
 
     },
     filterUpdated: function (component, event, helper) {
-        component.set("v.ShowSDGError", false);
-        var filters = component.get("v.SDGFilters");
+        component.set("v.ShowsmdgError", false);
+        var filters = component.get("v.smdgFilters");
         var filterlistlength = filters.length;
         var newfilters = [];
-        var newSDGFieldID = event.getParam("SDGFieldID");
+        var newsmdgFieldID = event.getParam("smdgFieldID");
 
         // create a map to deduplicate here...
         for (var i = 0; i < filterlistlength; i++) {
-            if (filters[i].SDGFieldID != newSDGFieldID) {
+            if (filters[i].smdgFieldID != newsmdgFieldID) {
                 newfilters.push(filters[i]);
             }
         }
@@ -73,10 +73,10 @@
         var newfilter = {
             "FilterValue": event.getParam("FilterValue"),
             "FilterOperator": event.getParam("FilterOperator"),
-            "SDGFieldID": event.getParam("SDGFieldID")
+            "smdgFieldID": event.getParam("smdgFieldID")
         }
         newfilters.push(newfilter);
-        component.set("v.SDGFilters", newfilters);
+        component.set("v.smdgFilters", newfilters);
         helper.AddToLog(component, 'Filters updated');
         helper.getResponseData(component);
     },
@@ -88,7 +88,7 @@
         helper.getResponseData(cmp);
     },
     sort: function (component, event, helper) {
-        component.set("v.SortColumn", event.getParam("SDGFieldID"));
+        component.set("v.SortColumn", event.getParam("smdgFieldID"));
         component.set("v.SortOrder", event.getParam("SortOrder"));
         helper.getResponseData(component);
 
@@ -127,10 +127,10 @@
     ToggleFilters: function (component, event, helper) {
 
         //Determine whether to show the filters:
-        var FiltersSet = component.get("v.SDGFiltersDefinition");
+        var FiltersSet = component.get("v.smdgFiltersDefinition");
         if (FiltersSet.length == 0) {
-            var SDGObject = component.get("v.SDG");
-            component.set("v.SDGFiltersDefinition", SDGObject.SDGFields);
+            var smdgObject = component.get("v.smdg");
+            component.set("v.smdgFiltersDefinition", smdgObject.smdgFields);
         }
 
         var newvalue = !component.get("v.ShowFilters");
@@ -171,9 +171,9 @@
         var c = component;
 
         evt.setParams({
-            componentDef: "c:sdgList",
+            componentDef: "c:smdgList",
             componentAttributes: {
-                SDGConfiguration: c.get("v.SDGConfiguration"),
+                smdgConfiguration: c.get("v.smdgConfiguration"),
                 HideOnError: false,
                 recordId: c.get("v.recordId"),
                 Title: c.get("v.Title"),

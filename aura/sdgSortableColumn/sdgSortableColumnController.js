@@ -3,7 +3,7 @@
         // alert('init column');
     },
     sort: function (component, event, helper) {
-        var field = component.get("v.SDGField");
+        var field = component.get("v.smdgField");
 
         if (field.isEncrypted) {
             alert('Cannot sort encypted field');
@@ -23,11 +23,11 @@
                 component.set("v.SortOrder", "A");
             }
 
-            var compEvent = component.getEvent("SDGSortableColumnSort");
+            var compEvent = component.getEvent("smdgSortableColumnSort");
             component.set("v.isSorted", true);
 
             compEvent.setParams({
-                "SDGFieldID": component.get("v.SDGField").ID,
+                "smdgFieldID": component.get("v.smdgField").ID,
                 "SortOrder": component.get("v.SortOrder")
             });
             compEvent.fire();
@@ -35,7 +35,7 @@
     },
     sortchanged: function (component, event, handler) {
 
-        if (component.get("v.SDGField").ID == component.get("v.CurrentSortedColumn")) {
+        if (component.get("v.smdgField").ID == component.get("v.CurrentSortedColumn")) {
             if (component.get("v.CurrentSortedOrder") == "A") {
                 component.set("v.isSortedD", false);
                 component.set("v.isSortedA", true);

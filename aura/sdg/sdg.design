@@ -2,9 +2,9 @@
     <design:attribute name="Title" label="Title" description="Title for the panel" default="" />
     <design:attribute name="SVGName" label="SVG Name" description="Name of the SLDS icon to use: visit https://www.lightningdesignsystem.com/resources/icons for more options"
         default="standard:account" />
-    <design:attribute name="SDGConfiguration" label="Data Provider" description="Available configurations" datasource="apex://sdgProperties"
+    <design:attribute name="smdgConfiguration" label="Data Provider" description="Available configurations" datasource="apex://smdgProperties"
     />
-    <design:attribute name="HideOnError" label="Hide component on error" description="Useful if the SDG's are private and you don't want everyone to see empty placeholders"
+    <design:attribute name="HideOnError" label="Hide component on error" description="Useful if the smdg's are private and you don't want everyone to see empty placeholders"
     />
     <design:attribute name="ShowDebug" label="Debug mode" description="Show the debug log" />
     <design:attribute name="UseCache" label="Cache Data" description="Cache result sets in the browser" />
@@ -16,6 +16,6 @@
     />
     <design:attribute name="FieldSetName" label="FieldSetName" description="Name of field set of child objects" />
 
-    <design:attribute name="SDGTag" label="Legacy Tag (Deprecated)" description="Legacy configuration - please use dropdown 'Data Provider' from now on"
+    <design:attribute name="smdgTag" label="Legacy Tag (Deprecated)" description="Legacy configuration - please use dropdown 'Data Provider' from now on"
     />
 </design:component>

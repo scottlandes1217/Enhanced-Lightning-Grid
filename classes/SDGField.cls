@@ -4,7 +4,7 @@ Copyright © Felix Lindsay 21 November 2017
 flindsay@gmail.com
 All rights reserved
 */
-global with sharing class SDGField implements Comparable
+global with sharing class smdgField implements Comparable
 {
 global string ID ;
 global string Label;
@@ -13,23 +13,23 @@ global string FieldType;
 global string FilterType; //NOT USED
 global string FieldStyle;
 global Boolean isHTMLFormatted;
-global SDGFilter Preferences;
+global smdgFilter Preferences;
 global Boolean canSort = false;
 global Boolean canFilter = false;
 global List<AuraSelectOption> options = new List<AuraSelectOption>();
 global integer FieldOrder;
 global integer scale;
 
-public sdgField()
+public smdgField()
 {
 
 }
 
-global sdgField(String ID, String Label, String ColumnName, String FieldType, String FieldStyle, Boolean canSort, List<AuraSelectOption> options)
+global smdgField(String ID, String Label, String ColumnName, String FieldType, String FieldStyle, Boolean canSort, List<AuraSelectOption> options)
 {
-    throw new sdgDeprecatedException('SDGField:Constructor signature no longer supported');
+    throw new smdgDeprecatedException('smdgField:Constructor signature no longer supported');
 }
-global sdgField(String ID, String Label, String ColumnName, String FieldType, String FieldStyle, Boolean canSort, Boolean isHTMLFormatted, List<AuraSelectOption> options)
+global smdgField(String ID, String Label, String ColumnName, String FieldType, String FieldStyle, Boolean canSort, Boolean isHTMLFormatted, List<AuraSelectOption> options)
 {
     this.ID = ID;
     this.Label = Label;
@@ -40,7 +40,7 @@ global sdgField(String ID, String Label, String ColumnName, String FieldType, St
     this.canSort = canSort;
     this.FieldOrder = 1;
 }
-    global sdgField(String ID, String Label, String ColumnName, String FieldType, String FieldStyle, Boolean canSort, Boolean isHTMLFormatted, List<AuraSelectOption> options, integer FieldOrder)
+    global smdgField(String ID, String Label, String ColumnName, String FieldType, String FieldStyle, Boolean canSort, Boolean isHTMLFormatted, List<AuraSelectOption> options, integer FieldOrder)
 {
     this.ID = ID;
     this.Label = Label;
@@ -52,7 +52,7 @@ global sdgField(String ID, String Label, String ColumnName, String FieldType, St
     this.FieldOrder = FieldOrder;
 }
 
-    global sdgField(String ID, String Label, String ColumnName, String FieldType, String FieldStyle, Boolean canSort, Boolean canFilter, Boolean isHTMLFormatted, List<AuraSelectOption> options, integer FieldOrder)
+    global smdgField(String ID, String Label, String ColumnName, String FieldType, String FieldStyle, Boolean canSort, Boolean canFilter, Boolean isHTMLFormatted, List<AuraSelectOption> options, integer FieldOrder)
 {
     this.ID = ID;
     this.Label = Label;
@@ -67,7 +67,7 @@ global sdgField(String ID, String Label, String ColumnName, String FieldType, St
 // Compare action based on the actionorder.
 public Integer compareTo(Object compareTo) {
     // Cast argument to wrapper
-    sdgField compareToField = (sdgField)compareTo;
+    smdgField compareToField = (smdgField)compareTo;
     
     // The return value of 0 indicates that both elements are equal.
     Integer returnValue = 0;

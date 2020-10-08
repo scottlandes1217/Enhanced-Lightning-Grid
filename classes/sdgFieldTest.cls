@@ -5,34 +5,34 @@ flindsay@gmail.com
 All rights reserved
 */
 @isTest
-public class sdgFieldTest {
+public class smdgFieldTest {
 
     static testMethod void GetCreate()
     {
         test.startTest();
-        SDGField f = new SDGField();
+        smdgField f = new smdgField();
         test.stopTest();
-        system.assertNotEquals(null,f, 'SDGFieldTest: Expected a SDGField to be created.');
+        system.assertNotEquals(null,f, 'smdgFieldTest: Expected a smdgField to be created.');
 
     }
     static testmethod void GetCreate2()
     {
           test.startTest();
         List<AuraSelectOption> opts = new List<AuraSelectOption>();
-        SDGField f = new SDGField('1', 'a label', 'Name', 'STRING', '', true, false, opts);
+        smdgField f = new smdgField('1', 'a label', 'Name', 'STRING', '', true, false, opts);
         test.stopTest();
-        system.assertNotEquals(null,f, 'SDGFieldTest:GetCreate2: Expected a rich SDGField to be created.');
-        system.assertEquals(true, f.canSort, 'SDGFieldTest:GetCreate2: Expected field to be saved');
+        system.assertNotEquals(null,f, 'smdgFieldTest:GetCreate2: Expected a rich smdgField to be created.');
+        system.assertEquals(true, f.canSort, 'smdgFieldTest:GetCreate2: Expected field to be saved');
    
    }
        static testmethod void GetCreate3()
     {
           test.startTest();
         List<AuraSelectOption> opts = new List<AuraSelectOption>();
-        SDGField f = new SDGField('1', 'a label', 'Name', 'STRING', '', true, false, false, opts, 1);
+        smdgField f = new smdgField('1', 'a label', 'Name', 'STRING', '', true, false, false, opts, 1);
         test.stopTest();
-        system.assertNotEquals(null,f, 'SDGFieldTest:GetCreate3: Expected a rich SDGField to be created. Not HTML formatted');
-        system.assertEquals(true, f.canSort, 'SDGFieldTest:GetCreate3: Expected field to be saved');
+        system.assertNotEquals(null,f, 'smdgFieldTest:GetCreate3: Expected a rich smdgField to be created. Not HTML formatted');
+        system.assertEquals(true, f.canSort, 'smdgFieldTest:GetCreate3: Expected field to be saved');
    
    }
     static testmethod void GetCreateFullDeprecated()
@@ -42,23 +42,23 @@ public class sdgFieldTest {
         {
 
             List<AuraSelectOption> opts = new List<AuraSelectOption>();
-            SDGField f = new SDGField('1', 'a label', 'STRING', '',  '', false, opts);
+            smdgField f = new smdgField('1', 'a label', 'STRING', '',  '', false, opts);
 
         }
-        catch(sdgDeprecatedException ex)
+        catch(smdgDeprecatedException ex)
         {
             isError = true;
         }
-        system.assertEquals(true, isError, 'sdgFieldTest:GetCreateFullDeprecated: Expected sdgDeprecatedException');
+        system.assertEquals(true, isError, 'smdgFieldTest:GetCreateFullDeprecated: Expected smdgDeprecatedException');
 
     }
     static testMethod void GetCreateFull()
     {
         test.startTest();
         List<AuraSelectOption> opts = new List<AuraSelectOption>();
-        SDGField f = new SDGField('1', 'a label', 'STRING', '', '', true, false, opts, 1);
+        smdgField f = new smdgField('1', 'a label', 'STRING', '', '', true, false, opts, 1);
         test.stopTest();
-        system.assertNotEquals(null,f, 'SDGFieldTest:GetCreateFull: Expected a rich SDGField to be created.');
-        system.assertEquals(true, f.canSort, 'SDGFieldTest:GetCreateFull: Expected field to be saved');
+        system.assertNotEquals(null,f, 'smdgFieldTest:GetCreateFull: Expected a rich smdgField to be created.');
+        system.assertEquals(true, f.canSort, 'smdgFieldTest:GetCreateFull: Expected field to be saved');
     }
 }

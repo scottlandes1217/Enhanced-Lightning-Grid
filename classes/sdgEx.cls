@@ -4,12 +4,12 @@ Copyright © Felix Lindsay 21 November 2017
 flindsay@gmail.com
 All rights reserved
 */
-public class sdgEx {
+public class smdgEx {
 
     public static Boolean RaiseNew(Exception ex)
     {
         boolean raise = false;
-        if (ex instanceof sdgException)
+        if (ex instanceof smdgException)
         {
             throw ex;
         }

@@ -19,20 +19,20 @@
     },
     getCoreParams: function (component) {
 
-        var config = component.get("v.SDGConfiguration");
+        var config = component.get("v.smdgConfiguration");
         if (config == undefined)
-            config = 'CustomObject:' + component.get("v.SDGTag");
+            config = 'CustomObject:' + component.get("v.smdgTag");
 
         var params = {
             "ParentRecordID": component.get("v.recordId"),
-            "SDGTag": config,
+            "smdgTag": config,
             "RelationshipName": component.get("v.RelationshipName"),
             "FieldSetName": component.get("v.FieldSetName")
 
         };
         return params;
     },
-    getSDG: function (component) {
+    getsmdg: function (component) {
 
         this.Waiting(component);
 
@@ -50,7 +50,7 @@
 
         component.set("v.isPaging", false);
         var thishelper = this;
-        this.callMethod(component, "c.GetSDGInitialLoad", params, { isStorable: true, isAbortable: true },
+        this.callMethod(component, "c.GetsmdgInitialLoad", params, { isStorable: true, isAbortable: true },
             function (results) {
 
                 if (results != null) {
@@ -61,16 +61,16 @@
                             component.set("v.ShowComponent", false);
                         }
 
-                        component.set("v.ShowSDGError", true);
+                        component.set("v.ShowsmdgError", true);
                         component.set("v.ErrorMessage", results.ErrorMessage);
 
                         thishelper.showtoast("Error", results.ErrorMessage, component);
 
                     }
                     else {
-                        component.set("v.SDG", results.SDGObject);
+                        component.set("v.smdg", results.smdgObject);
                         //Check Filters
-                        var fields = results.SDGObject.SDGFields;
+                        var fields = results.smdgObject.smdgFields;
                         var fieldlistlength = fields.length;
                         var hasFilters = false;
                         var hasSummary = false;
@@ -86,17 +86,17 @@
                         component.set("v.hasSummary", hasSummary);
                         component.set("v.hasFilters", hasFilters);
                         //Set up Actions
-                        if (results.SDGObject.SDGActions != null) {
-                            var listsize = results.SDGObject.SDGActions.length;
+                        if (results.smdgObject.smdgActions != null) {
+                            var listsize = results.smdgObject.smdgActions.length;
 
                             var hasListMenu = false;
                             var hasRowMenu = false;
                             var hasRowActions = false;
                             var hasMulti = false;
 
-                            component.set("v.SDGActions", results.SDGObject.SDGActions);
+                            component.set("v.smdgActions", results.smdgObject.smdgActions);
                             for (var i = 0; i < listsize; i++) {
-                                var actiontype = results.SDGObject.SDGActions[i].Type;
+                                var actiontype = results.smdgObject.smdgActions[i].Type;
 
                                 if (actiontype == 'List')
                                     hasListMenu = true;
@@ -122,7 +122,7 @@
                     }
                 }
                 else {
-                    component.set("v.ShowSDGError", true);
+                    component.set("v.ShowsmdgError", true);
                     console.warn('Cannot load configuration data:  Please reconfigure the component in the designer.');
                 }
             });
@@ -130,7 +130,7 @@
     },
     Waiting: function (component) {
         this.AddToLog(component, 'Mode: Waiting');
-        var table = component.find("sdgdatatablewrapper");
+        var table = component.find("smdgdatatablewrapper");
         $A.util.addClass(table, "working");
 
     },
@@ -146,7 +146,7 @@
         }
     },
     DoneWaiting: function (component) {
-        var table = component.find("sdgdatatablewrapper");
+        var table = component.find("smdgdatatablewrapper");
         $A.util.removeClass(table, "working");
         this.AddToLog(component, 'Mode: DoneWaiting');
 
@@ -167,7 +167,7 @@
 
         if (resultsobj.isError) {
 
-            component.set("v.ShowSDGError", true);
+            component.set("v.ShowsmdgError", true);
             component.set("v.ErrorMessage", resultsobj.ErrorMessage);
             console.error(resultsobj.ErrorMessage);
             this.AddToLog(component, resultsobj.ErrorMessage);
@@ -186,7 +186,7 @@
             }
 
             //Now process the data into a list of data:
-            var fields = component.get("v.SDG.SDGFields");
+            var fields = component.get("v.smdg.smdgFields");
             var fieldlistlength = fields.length;
 
             var rows = [];
@@ -359,20 +359,20 @@
         var thishelper = this;
         try {
             this.Waiting(component);
-            //var action = component.get("c.getSDGResult");
+            //var action = component.get("c.getsmdgResult");
             var config = {};
 
             config.isStorable = (component.get("v.UseCache") == true);
             var params = this.getCoreParams(component);
 
             params.PageID = parseInt(component.find('PagerPage').get("v.value"));
-            params.Filters = component.get("v.SDGFilters");
+            params.Filters = component.get("v.smdgFilters");
             params.PageSize = parseInt(component.find('PagerSize').get("v.value"));
             params.SortOrder = component.get("v.SortOrder");
             params.SortColumn = component.get("v.SortColumn");
             params.reloadseed = component.get("v.reloadseed");
 
-            if (component.get("v.SDGFilters").length > 0) {
+            if (component.get("v.smdgFilters").length > 0) {
                 component.set("v.FilterButtonClass", "slds-is-selected");
             }
             else {
@@ -381,7 +381,7 @@
 
             var req = { "jsonrequest": JSON.stringify(params) };
 
-            this.callMethod(component, "c.getSDGResult", req, config,
+            this.callMethod(component, "c.getsmdgResult", req, config,
                 function (results) {
                     thishelper.handleResults(component, results);
                 });
@@ -395,7 +395,7 @@
     FireEvent: function (component, actionid, datarow) {
 
         var evt;
-        var actions = component.get("v.SDG.SDGActions");
+        var actions = component.get("v.smdg.smdgActions");
         var opts = [];
         for (var i = 0; i < actions.length; i++) {
             if (actions[i].Id == actionid) {

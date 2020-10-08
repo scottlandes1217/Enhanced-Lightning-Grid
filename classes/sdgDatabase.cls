@@ -4,19 +4,19 @@ Copyright © Felix Lindsay 21 November 2017
 flindsay@gmail.com
 All rights reserved
 */
-public with sharing class sdgDatabase {
+public with sharing class smdgDatabase {
 
 public static integer CountQuery(string query, Boolean DisableSharing)
     {
         system.debug('disable sharing: ' + DisableSharing);
         if (DisableSharing)
         {
-            sdgDatabaseWithoutSharing ws = new sdgDatabase.sdgDatabaseWithoutSharing();
+            smdgDatabaseWithoutSharing ws = new smdgDatabase.smdgDatabaseWithoutSharing();
             return ws.CountQuery(query );
         }
         else
         {
-            sdgDatabaseWithSharing ws = new sdgDatabase.sdgDatabaseWithSharing();
+            smdgDatabaseWithSharing ws = new smdgDatabase.smdgDatabaseWithSharing();
             return ws.CountQuery(query );
         }
         
@@ -26,17 +26,17 @@ public static integer CountQuery(string query, Boolean DisableSharing)
         system.debug('disable sharing: ' + DisableSharing);
         if (DisableSharing)
         {
-            sdgDatabaseWithoutSharing ws = new sdgDatabase.sdgDatabaseWithoutSharing();
+            smdgDatabaseWithoutSharing ws = new smdgDatabase.smdgDatabaseWithoutSharing();
             return ws.Query(query );
         }
         else
         {
-            sdgDatabaseWithSharing ws = new sdgDatabase.sdgDatabaseWithSharing();
+            smdgDatabaseWithSharing ws = new smdgDatabase.smdgDatabaseWithSharing();
             return ws.Query(query );
         }
         
     }
-    public with sharing class sdgDatabaseWithSharing {
+    public with sharing class smdgDatabaseWithSharing {
         public integer CountQuery(string query)
         {
             return database.countQuery(query);
@@ -48,7 +48,7 @@ public static integer CountQuery(string query, Boolean DisableSharing)
         }
     }
 
-    private without sharing class sdgDatabaseWithoutSharing{
+    private without sharing class smdgDatabaseWithoutSharing{
         public integer CountQuery(string query)
         {
             return database.countQuery(query);

@@ -4,19 +4,19 @@ Copyright © Felix Lindsay 21 November 2017
 flindsay@gmail.com
 All rights reserved
 */
-public with sharing class sdgQueryEngine {
-    public virtual class sdgQueryEngineException extends sdgException {}
-    public  class sdgInvalidFilterException extends sdgException {}
-    public  class sdgInvalidSortException extends sdgException {}
-    public  class sdgInvalidQueryException extends sdgException {}
-    public  class sdgInvalidEngineRequestException extends sdgException {}
+public with sharing class smdgQueryEngine {
+    public virtual class smdgQueryEngineException extends smdgException {}
+    public  class smdgInvalidFilterException extends smdgException {}
+    public  class smdgInvalidSortException extends smdgException {}
+    public  class smdgInvalidQueryException extends smdgException {}
+    public  class smdgInvalidEngineRequestException extends smdgException {}
 
-    public static SDGRequest InsertDefaults(SDGRequest request)
+    public static smdgRequest InsertDefaults(smdgRequest request)
     {
  
         //If there are no filters - then create a dummy record:
         if (request.filters==null)
-            request.filters = new list<SDGFilter>();
+            request.filters = new list<smdgFilter>();
         //default pagesize and pageid if not set
         if (request.PageSize ==null)
             request.PageSize = 10;
@@ -25,15 +25,15 @@ public with sharing class sdgQueryEngine {
         return request;
     }
 
-    public static void VerifyRequest(SDGRequest request, Map<String, SDGField> mFields)
+    public static void VerifyRequest(smdgRequest request, Map<String, smdgField> mFields)
     {
         //Check if any of the filters aren't in the original set of ids for fields
-        for (SDGFilter filter : request.filters)
+        for (smdgFilter filter : request.filters)
         {
             //Note that mfields only has fields that are already checked for FLS so this is in effect an FLS check
-            if (!mfields.containsKey(filter.SDGFieldID))
+            if (!mfields.containsKey(filter.smdgFieldID))
             {
-                throw new sdgInvalidFilterException('Invalid SDGRequest.Filters');
+                throw new smdgInvalidFilterException('Invalid smdgRequest.Filters');
             }
         }
 
@@ -42,28 +42,28 @@ public with sharing class sdgQueryEngine {
         {
             if (!mfields.containsKey(request.SortColumn))
             {
-                throw new sdgInvalidSortException('Invalid SDGRequest.SortColumn');
+                throw new smdgInvalidSortException('Invalid smdgRequest.SortColumn');
             }
         }
     }
 
-    public static map<String, SDGField> GetSelectFieldsMap(sdg sdgObject)
+    public static map<String, smdgField> GetSelectFieldsMap(smdg smdgObject)
     {
 
-        Map<String, SDGField> results = new Map<String, SDGField>();
+        Map<String, smdgField> results = new Map<String, smdgField>();
         //Get all the fields for the select clause
-        for (SDGField field : sdgObject.SDGFields)
+        for (smdgField field : smdgObject.smdgFields)
         {
             results.put(field.id,field);
         }
         return results;
     }
  
-    public static List<String> GetUniqueSelectFieldsList(sdg sdgObject)
+    public static List<String> GetUniqueSelectFieldsList(smdg smdgObject)
     {
         Set<String> fieldset = new Set<String>();
         //Get all the fields for the select clause
-        for (SDGField field : sdgObject.SDGFields)
+        for (smdgField field : smdgObject.smdgFields)
         {
 
             //Add the selectable field to the list of select names
@@ -92,11 +92,11 @@ public with sharing class sdgQueryEngine {
         return res;
     }
 
-    public static SDGResult getSDGResultRaw(SDG newSDG, SDGRequest request)
+    public static smdgResult getsmdgResultRaw(smdg newsmdg, smdgRequest request)
     {
-        system.debug('QueryEngine:getSDGResultRaw');
+        system.debug('QueryEngine:getsmdgResultRaw');
         system.debug(json.serialize(request));
-        system.debug(json.serialize(newsdg));
+        system.debug(json.serialize(newsmdg));
         //Verify against the database, and escape everything - including the config values
 
         Boolean bInvalidRequest = false;
@@ -119,22 +119,22 @@ public with sharing class sdgQueryEngine {
         //4 Get where clause
         //5 handle pagination
 
-        //load the SDG and fields:
+        //load the smdg and fields:
 
-        SDGResult result = new SDGResult();
+        smdgResult result = new smdgResult();
 
 
-        Map<String, SDGField> mFields = new Map<String, SDGField>();
+        Map<String, smdgField> mFields = new Map<String, smdgField>();
 
         result.isError = true;
-        result.ErrorMessage = 'No SDG found';
+        result.ErrorMessage = 'No smdg found';
         //Validate that the request is safe:
-        if (newSDG!=null)
+        if (newsmdg!=null)
         {
-            //The SDG record exists
+            //The smdg record exists
             try
             {
-                mFields = GetSelectFieldsMap(newSDG);
+                mFields = GetSelectFieldsMap(newsmdg);
                 //Fix any blank data for paging and null filters
                 request = InsertDefaults(request);
 
@@ -142,32 +142,32 @@ public with sharing class sdgQueryEngine {
                 VerifyRequest(request, mFields);
 
                 //Everything looks oK so far so save the filters
-                sdgPreferences.SaveFilters(request, newSDG.InternalData.sUniqueKey);
+                smdgPreferences.SaveFilters(request, newsmdg.InternalData.sUniqueKey);
 
                 //and generate the query
-                List<String> AllSelectFields = GetUniqueSelectFieldsList(newSDG);
+                List<String> AllSelectFields = GetUniqueSelectFieldsList(newsmdg);
 
-                // Note FLS checks done on AllSelectFields when retrieving SDG (in e.GetSDG()) above - actually in GetSDGFields and GetSDGFieldsFromFieldSet
+                // Note FLS checks done on AllSelectFields when retrieving smdg (in e.Getsmdg()) above - actually in GetsmdgFields and GetsmdgFieldsFromFieldSet
                 // Also - filters can only exist for fields - so this auto filters based on FLS
-                pageQuery = 'SELECT ' + String.join(AllSelectFields,',') + ' FROM ' +  String.escapeSingleQuotes(newSDG.internalData.sObjectName);
+                pageQuery = 'SELECT ' + String.join(AllSelectFields,',') + ' FROM ' +  String.escapeSingleQuotes(newsmdg.internalData.sObjectName);
 
                 internalpageid =Integer.valueOf(request.PageID);
                 internalPageSize = integer.valueOf(request.PageSize);
                 internalpageid = internalpageid-1;
                 String sSortClause;
 
-                 sSortClause = BuildSortClause(newSDG, request, mFields);
+                 sSortClause = BuildSortClause(newsmdg, request, mFields);
 
                 //support where it's blank so we can use on non related lists
-                if (!String.isBlank(newSDG.InternalData.ParentFieldName))
+                if (!String.isBlank(newsmdg.InternalData.ParentFieldName))
                 {
-                    CoreWhereClauses.add( ' ' + String.escapeSingleQuotes(newSDG.InternalData.ParentFieldName) + ' = \'' + String.escapeSingleQuotes(request.ParentRecordID) + '\' ');
+                    CoreWhereClauses.add( ' ' + String.escapeSingleQuotes(newsmdg.InternalData.ParentFieldName) + ' = \'' + String.escapeSingleQuotes(request.ParentRecordID) + '\' ');
                 }
 
                 //Add the serverside default filter:
-                if (!String.isBlank(newSDG.InternalData.sFilter))
+                if (!String.isBlank(newsmdg.InternalData.sFilter))
                 {
-                    CorewhereClauses.add(' ' + newSDG.InternalData.sFilter + ' ');
+                    CorewhereClauses.add(' ' + newsmdg.InternalData.sFilter + ' ');
                 }
 
                 //Loop through each filter clause
@@ -183,39 +183,39 @@ public with sharing class sdgQueryEngine {
                 if (CoreWhereClauses.size()>0)
                     sCoreWhereClause = ' WHERE ' + String.join( CoreWhereClauses, ' AND ');
 
-                sAllWhereClause = sdgQueryBuilder.ProcessMergeFields(sAllWhereClause, request.ParentRecordId);
-                sCoreWhereClause = sdgQueryBuilder.ProcessMergeFields(sCoreWhereClause, request.ParentRecordId);
+                sAllWhereClause = smdgQueryBuilder.ProcessMergeFields(sAllWhereClause, request.ParentRecordId);
+                sCoreWhereClause = smdgQueryBuilder.ProcessMergeFields(sCoreWhereClause, request.ParentRecordId);
 
                 pageQuery = pageQuery + sAllWhereClause;
                 integer offset =integer.valueOf( internalPageSize * internalpageid);
                 String sPagination = ' limit ' + internalPageSize + ' offset  ' + offset;
 
-                if (newSDG.InternalData.AllRows)
+                if (newsmdg.InternalData.AllRows)
                 {
                     AllRows = ' ALL ROWS';
                 }
 
                 pageQuery = pageQuery +  sSortClause + sPagination + AllRows;
-                system.debug('getSDGResultRaw:pageQuery: ' + pageQuery);
+                system.debug('getsmdgResultRaw:pageQuery: ' + pageQuery);
             }
             catch (Exception ex)
             {
-                throw new sdgInvalidEngineRequestException(ex);
+                throw new smdgInvalidEngineRequestException(ex);
             }
 
             try
             {
               
                 //now evaluate the count
-                String countQuery = 'select count() from ' + String.escapeSingleQuotes(newSDG.InternalData.sObjectName) + ' ' + sAllWhereClause + sCountLimit + AllRows;
-                DisableSharing = newSDG.internalData.DisableSharing;
+                String countQuery = 'select count() from ' + String.escapeSingleQuotes(newsmdg.InternalData.sObjectName) + ' ' + sAllWhereClause + sCountLimit + AllRows;
+                DisableSharing = newsmdg.internalData.DisableSharing;
 
-                Integer countFull = sdgDatabase.CountQuery(countQuery, DisableSharing);
+                Integer countFull = smdgDatabase.CountQuery(countQuery, DisableSharing);
 
                 result.FullQueryCount =countFull;
                 result.pagecount = (integer) math.ceil(countFull/internalPageSize);
 
-                result.data = sdgDatabase.Query(pageQuery, DisableSharing);
+                result.data = smdgDatabase.Query(pageQuery, DisableSharing);
                 system.debug('Query complete - pagesize: ' + result.data.size());
                 result.query = pageQuery;
                 result.isFiltered = UserWhereClauses.size()>0;
@@ -225,14 +225,14 @@ public with sharing class sdgQueryEngine {
             catch (exception ex)
             {
                 result.query = pageQuery;
-                throw new SDGInvalidQueryException('Unable to query: ' + pageQuery, ex);
+                throw new smdgInvalidQueryException('Unable to query: ' + pageQuery, ex);
             }
 
         }
 
         return  result;
     }
-    private static String BuildSortClause(SDG sdg, SDGRequest request, Map<String, SDGField> mFields)
+    private static String BuildSortClause(smdg smdg, smdgRequest request, Map<String, smdgField> mFields)
     {
 
         //Default input:
@@ -244,7 +244,7 @@ public with sharing class sdgQueryEngine {
             if (!String.isBlank(request.SortColumn)) {
                 try
                 {
-                    sSortColumn = String.escapeSingleQuotes(((SDGField)mFields.get(request.SortColumn)).ColumnName);
+                    sSortColumn = String.escapeSingleQuotes(((smdgField)mFields.get(request.SortColumn)).ColumnName);
                     sSortOrder = request.SortOrder;
                 }
                 catch(Exception ex)
@@ -258,7 +258,7 @@ public with sharing class sdgQueryEngine {
             else
             {
                 //NO FLS check here for internal sorts
-                String defaultSort = sdg.InternalData.sDefaultSort;
+                String defaultSort = smdg.InternalData.sDefaultSort;
 
                 if (String.isNotBlank( defaultSort))
                 {
@@ -276,29 +276,29 @@ public with sharing class sdgQueryEngine {
             }
 
             //Now build the actual clause:
-            sSortClause = sdgQueryBuilder.buildSortClause(sSortColumn, sSortOrder);
+            sSortClause = smdgQueryBuilder.buildSortClause(sSortColumn, sSortOrder);
             
         }
         catch (Exception ex)
         {
-            if (sdgEx.RaiseNew(ex))
-                throw new sdgInvalidSortException('Invalid sort clause', ex);
+            if (smdgEx.RaiseNew(ex))
+                throw new smdgInvalidSortException('Invalid sort clause', ex);
         }
         return sSortClause;
     }
-    private static List<String> AddFilters(SDGRequest request, Map<String, SDGField> mfields)
+    private static List<String> AddFilters(smdgRequest request, Map<String, smdgField> mfields)
     {
-        system.debug('sdgQueryEngine:AddFilters ' + JSON.serialize(request.filters));
+        system.debug('smdgQueryEngine:AddFilters ' + JSON.serialize(request.filters));
         List<String> UserWhereClauses = new List<String>();
-        for (SDGFilter filter : request.filters)
+        for (smdgFilter filter : request.filters)
         {
             if (string.isblank(filter.filteroperator))
                 filter.filteroperator = '=';
 
-            SDGField databasefield = mfields.get(filter.SDGFieldID);
+            smdgField databasefield = mfields.get(filter.smdgFieldID);
             if (databasefield.canFilter)
             {
-                String clause = sdgQueryBuilder.BuildFilterClause( databasefield.ColumnName, databasefield.FieldType, filter.filterOperator, filter.filterValue);
+                String clause = smdgQueryBuilder.BuildFilterClause( databasefield.ColumnName, databasefield.FieldType, filter.filterOperator, filter.filterValue);
                 if (!String.isBlank(clause))
                      UserWhereClauses.add(clause);
             }

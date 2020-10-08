@@ -5,24 +5,24 @@ flindsay@gmail.com
 All rights reserved
 */
 @isTest
-public class sdgFilterTest {
+public class smdgFilterTest {
 
     static testMethod void GetCreate()
     {
         test.startTest();
-        SDGFilter f = new SDGFilter();
+        smdgFilter f = new smdgFilter();
         test.stopTest();
-        system.assertNotEquals(null,f, 'SDGFilterTest: Expected a SDGFilter to be created.');
+        system.assertNotEquals(null,f, 'smdgFilterTest: Expected a smdgFilter to be created.');
 
     }
 
  	static testMethod void GetCreateFull()
     {
         test.startTest();
-        SDGFilter f = new SDGFilter('1', '=', 'APPLE');
+        smdgFilter f = new smdgFilter('1', '=', 'APPLE');
         test.stopTest();
-        system.assertNotEquals(null,f, 'SDGFilterTest:GetCreateFull: Expected a rich SDGFilter to be created.');
-        system.assertEquals('=', f.filterOperator, 'SDGFilterTest:GetCreateFull: Expected filteroperator to be saved ');
-        system.assertEquals('APPLE', f.filterValue, 'SDGFilterTest:GetCreateFull: Expected filtervalue to be saved ');
+        system.assertNotEquals(null,f, 'smdgFilterTest:GetCreateFull: Expected a rich smdgFilter to be created.');
+        system.assertEquals('=', f.filterOperator, 'smdgFilterTest:GetCreateFull: Expected filteroperator to be saved ');
+        system.assertEquals('APPLE', f.filterValue, 'smdgFilterTest:GetCreateFull: Expected filtervalue to be saved ');
     }
 }

@@ -139,17 +139,17 @@
         }
     },
     formatDurationDateTime: function (cmp, dateRecord) {
-        var sdgAgo = cmp.get("v.sdgAgo");
-        var sdgIn = cmp.get("v.sdgIn");
+        var smdgAgo = cmp.get("v.smdgAgo");
+        var smdgIn = cmp.get("v.smdgIn");
         var dateNow = Date.now();
         var dur = $A.localizationService.duration((dateNow - dateRecord) / (1000 * 60 * 60 * 24), 'd');
         var displayduration = $A.localizationService.displayDuration(dur);
         var output = '';
         if ((dateNow - dateRecord) > 0) {
-            output = sdgAgo.replace('{0}', displayduration);
+            output = smdgAgo.replace('{0}', displayduration);
         }
         else {
-            output = sdgIn.replace('{0}', displayduration);
+            output = smdgIn.replace('{0}', displayduration);
         }
         return output;
     },

@@ -5,114 +5,114 @@ flindsay@gmail.com
 All rights reserved
 */
 @isTest
-public class sdgTestData {
-    public static String TestSDGName = 'TestSDG';
-    public static String TestSampleSDGName = 'SampleDataSDG';
+public class smdgTestData {
+    public static String TestsmdgName = 'Testsmdg';
+    public static String TestSamplesmdgName = 'SampleDatasmdg';
 
-    private  static string GenerateTestData(String SDGName)
+    private  static string GenerateTestData(String smdgName)
     {
-        //self referential - sdg showing sdg fields...
-        string sdgid = GenerateCoreSDG(SDGName);
-        List<SDG_Field__c> fields = new List<SDG_Field__c>();
-        GenerateTestSDGFieldString(sdgid, 'name', 1);
-        GenerateTestSDGFieldString(sdgid, sdgNamespaceUtility.GetNamespace() + 'apiname__c',2);
+        //self referential - smdg showing smdg fields...
+        string smdgid = GenerateCoresmdg(smdgName);
+        List<smdg_Field__c> fields = new List<smdg_Field__c>();
+        GenerateTestsmdgFieldString(smdgid, 'name', 1);
+        GenerateTestsmdgFieldString(smdgid, smdgNamespaceUtility.GetNamespace() + 'apiname__c',2);
 
-        return sdgid;
+        return smdgid;
     }
-    public static string GenerateCoreSDG(String SDGName)
+    public static string GenerateCoresmdg(String smdgName)
     {
-        SDG__c a = new SDG__c(Name=SDGName, sdg_tag__c = SDGName, is_valid__c=true, sobjectname__c=sdgNamespaceUtility.GetNamespace() + 'sdg_field__c', parent_field_name__c = sdgNamespaceUtility.GetNamespace() + 'sdg__r.id');
+        smdg__c a = new smdg__c(Name=smdgName, smdg_tag__c = smdgName, is_valid__c=true, sobjectname__c=smdgNamespaceUtility.GetNamespace() + 'smdg_field__c', parent_field_name__c = smdgNamespaceUtility.GetNamespace() + 'smdg__r.id');
         insert a;
-        system.debug('CreatedSDG: id: ' + a.id + ' - Name: ' + SDGName);
+        system.debug('Createdsmdg: id: ' + a.id + ' - Name: ' + smdgName);
         return a.id;
     }
     public static string GenerateTestSampleData()
     {
-        return GenerateTestData(TestSampleSDGName);
+        return GenerateTestData(TestSamplesmdgName);
     }
-    public static String GenerateTestSDG()
+    public static String GenerateTestsmdg()
     {
-        //Create a custom SDG:
-        String id = GenerateTestData(TestSDGName);
+        //Create a custom smdg:
+        String id = GenerateTestData(TestsmdgName);
         GenerateAction(id);
 
         return Id;
 
     }
-    public static string GenerateTestSDGFieldStringName(String SDGID)
+    public static string GenerateTestsmdgFieldStringName(String smdgID)
     {
-        return GenerateTestSDGFieldString(sdgid, 'Name',1);
+        return GenerateTestsmdgFieldString(smdgid, 'Name',1);
     }
 
-    public static string GenerateTestSDGFieldString(String SDGID)
+    public static string GenerateTestsmdgFieldString(String smdgID)
     {
-        return GenerateTestSDGFieldString(sdgid, sdgNamespaceUtility.GetNamespace() + 'APIname__c',1);
+        return GenerateTestsmdgFieldString(smdgid, smdgNamespaceUtility.GetNamespace() + 'APIname__c',1);
     }
 
-    public static string GenerateTestSDGFieldString(String SDGID, String fieldName, integer fieldorder)
+    public static string GenerateTestsmdgFieldString(String smdgID, String fieldName, integer fieldorder)
     {
         //String Field
-        SDG_Field__c field = new SDG_Field__c( apiname__c=fieldName, fieldOrder__c = fieldorder, sdg__c=sdgid, is_valid_field__c=true );
+        smdg_Field__c field = new smdg_Field__c( apiname__c=fieldName, fieldOrder__c = fieldorder, smdg__c=smdgid, is_valid_field__c=true );
         insert field;
         return field.id;
     }
 
-    /*public static string GenerateTestSDGFieldTraverseString(String SDGID)
+    /*public static string GenerateTestsmdgFieldTraverseString(String smdgID)
     {
         //String Field
-        SDG_Field__c field = new SDG_Field__c( apiname__c=sdgNamespaceUtility.GetNamespace() + 'sdg__r.name', fieldOrder__c = 2, sdg__c=sdgid, is_valid_field__c=true );
+        smdg_Field__c field = new smdg_Field__c( apiname__c=smdgNamespaceUtility.GetNamespace() + 'smdg__r.name', fieldOrder__c = 2, smdg__c=smdgid, is_valid_field__c=true );
         insert field;
         return field.id;
     }
 */
-    public static string GenerateTestSDGFieldNumber(String SDGID)
+    public static string GenerateTestsmdgFieldNumber(String smdgID)
     {
         //String Field
-        SDG_Field__c field = new SDG_Field__c( apiname__c=sdgNamespaceUtility.GetNamespace() + 'fieldorder__c', fieldOrder__c = 3, sdg__c=sdgid, is_valid_field__c=true );
+        smdg_Field__c field = new smdg_Field__c( apiname__c=smdgNamespaceUtility.GetNamespace() + 'fieldorder__c', fieldOrder__c = 3, smdg__c=smdgid, is_valid_field__c=true );
         insert field;
         return field.id;
 
     }
 
-    public static string GenerateTestSDGFieldDate(String SDGID)
+    public static string GenerateTestsmdgFieldDate(String smdgID)
     {
         //Date
-        SDG_Field__c field = new SDG_Field__c( apiname__c='createddate', fieldOrder__c = 4, sdg__c=sdgid, is_valid_field__c=true );
+        smdg_Field__c field = new smdg_Field__c( apiname__c='createddate', fieldOrder__c = 4, smdg__c=smdgid, is_valid_field__c=true );
         insert field;
         return field.id;
 
     }
-    public static string GenerateTestSDGFieldDateTime(String SDGID)
+    public static string GenerateTestsmdgFieldDateTime(String smdgID)
     {
         //Date
-        SDG_Field__c field = new SDG_Field__c( apiname__c='lastmodifieddate', fieldOrder__c = 5, sdg__c=sdgid, is_valid_field__c=true );
+        smdg_Field__c field = new smdg_Field__c( apiname__c='lastmodifieddate', fieldOrder__c = 5, smdg__c=smdgid, is_valid_field__c=true );
         insert field;
         return field.id;
     }
-    public static string GenerateTestSDGFieldBoolean(String SDGID)
+    public static string GenerateTestsmdgFieldBoolean(String smdgID)
     {
-        SDG_Field__c field = new SDG_Field__c( apiname__c=sdgNamespaceUtility.GetNamespace() + 'is_valid_field__c', fieldOrder__c = 6, sdg__c=sdgid, is_valid_field__c=true );
+        smdg_Field__c field = new smdg_Field__c( apiname__c=smdgNamespaceUtility.GetNamespace() + 'is_valid_field__c', fieldOrder__c = 6, smdg__c=smdgid, is_valid_field__c=true );
         insert field;
         return field.id;
     }
-    public static string GenerateTestSDGFieldPicklist(String SDGID)
+    public static string GenerateTestsmdgFieldPicklist(String smdgID)
     {
-        SDG_Field__c field = new SDG_Field__c( apiname__c=sdgNamespaceUtility.GetNamespace() + 'field_style__c', fieldOrder__c = 7, sdg__c=sdgid, is_valid_field__c=true );
+        smdg_Field__c field = new smdg_Field__c( apiname__c=smdgNamespaceUtility.GetNamespace() + 'field_style__c', fieldOrder__c = 7, smdg__c=smdgid, is_valid_field__c=true );
         insert field;
         return field.id;
     }
 
 
 
-    public static string GenerateAction(String sdgid)
+    public static string GenerateAction(String smdgid)
     {
-        SDG_Action__c act = new SDG_Action__c();
+        smdg_Action__c act = new smdg_Action__c();
         act.requires_createable__c = true;
         act.Requires_Editable__c= true;
         act.Action_Type__c = 'List';
         act.event_payload__c = '{ dummy payload}';
         act.Action_Order__c=1;
-        act.sdg__c = sdgid;
+        act.smdg__c = smdgid;
         act.Event__c='c.force:editRecord';
         insert act;
         return act.id;

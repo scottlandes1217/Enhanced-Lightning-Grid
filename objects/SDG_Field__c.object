@@ -86,7 +86,7 @@
             <isRequired>false</isRequired>
         </displayedFields>
         <displayedFields>
-            <field>sdg__r.Name</field>
+            <field>smdg__r.Name</field>
             <isFieldManaged>false</isFieldManaged>
             <isRequired>false</isRequired>
         </displayedFields>
@@ -195,12 +195,12 @@
         <type>Checkbox</type>
     </fields>
     <fields>
-        <fullName>sdg__c</fullName>
+        <fullName>smdg__c</fullName>
         <deprecated>false</deprecated>
         <externalId>false</externalId>
-        <label>sdg</label>
-        <referenceTo>SDG__c</referenceTo>
-        <relationshipName>SDGFields</relationshipName>
+        <label>smdg</label>
+        <referenceTo>smdg__c</referenceTo>
+        <relationshipName>smdgFields</relationshipName>
         <relationshipOrder>0</relationshipOrder>
         <reparentableMasterDetail>false</reparentableMasterDetail>
         <trackTrending>false</trackTrending>

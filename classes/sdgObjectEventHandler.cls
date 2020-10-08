@@ -4,7 +4,7 @@ Copyright © Felix Lindsay 21 November 2017
 flindsay@gmail.com
 All rights reserved
 */
-public with sharing class sdgObjectEventHandler {
+public with sharing class smdgObjectEventHandler {
 
     Public class NameValue
     {

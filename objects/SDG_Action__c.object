@@ -180,13 +180,13 @@
         <type>Checkbox</type>
     </fields>
     <fields>
-        <fullName>SDG__c</fullName>
+        <fullName>smdg__c</fullName>
         <deprecated>false</deprecated>
         <externalId>false</externalId>
-        <label>SDG</label>
-        <referenceTo>SDG__c</referenceTo>
+        <label>smdg</label>
+        <referenceTo>smdg__c</referenceTo>
         <relationshipLabel>Sortable Data Grid Actions</relationshipLabel>
-        <relationshipName>SDG_Actions</relationshipName>
+        <relationshipName>smdg_Actions</relationshipName>
         <relationshipOrder>0</relationshipOrder>
         <reparentableMasterDetail>false</reparentableMasterDetail>
         <trackTrending>false</trackTrending>

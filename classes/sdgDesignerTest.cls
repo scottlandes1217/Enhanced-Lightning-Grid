@@ -5,12 +5,12 @@ flindsay@gmail.com
 All rights reserved
 */
 @isTest
-public class sdgDesignerTest {
+public class smdgDesignerTest {
     static testmethod void GetSObjectFieldsTest()
     {
         test.startTest();
 
-        List<AuraFieldSelectOption> results = sdgDesigner.GetSObjectFields('Account', '');
+        List<AuraFieldSelectOption> results = smdgDesigner.GetSObjectFields('Account', '');
         system.assertNotEquals(0, results.size(), 'Expecting multiple fields');
 
         test.stopTest();
@@ -20,19 +20,19 @@ public class sdgDesignerTest {
     {
         test.startTest();
 
-        string results = sdgDesigner.GetNamespace();
-        system.assertEquals(sdgNamespaceUtility.getNamespace(), results, 'Expecting namespace');
+        string results = smdgDesigner.GetNamespace();
+        system.assertEquals(smdgNamespaceUtility.getNamespace(), results, 'Expecting namespace');
 
         test.stopTest();
     }
     static testmethod void GetNewFieldOrderTest()
     {
-        Id sdgid = sdgTestData.GenerateTestSampleData();
+        Id smdgid = smdgTestData.GenerateTestSampleData();
         test.startTest();
-        integer result = sdgDesigner.GetNewFieldOrder(sdgid);
+        integer result = smdgDesigner.GetNewFieldOrder(smdgid);
         system.assertEquals(3, result, 'Expecting new field order');
-        sdgTestData.GenerateTestSDGFieldString(sdgid, 'name', 5);
-        integer result2 = sdgDesigner.GetNewFieldOrder(sdgid);
+        smdgTestData.GenerateTestsmdgFieldString(smdgid, 'name', 5);
+        integer result2 = smdgDesigner.GetNewFieldOrder(smdgid);
         system.assertEquals(6, result2, 'Expecting new field order - 5+1');
         test.stopTest();
 
@@ -40,20 +40,20 @@ public class sdgDesignerTest {
 
     static testmethod void GetSObjectFieldsIDTest()
     {
-        Id recordId = sdgTestData.GenerateTestSDG();
+        Id recordId = smdgTestData.GenerateTestsmdg();
         test.startTest();
 
-        List<AuraFieldSelectOption> sdgresults = sdgDesigner.GetSObjectFields('SDG__c', '');
-        //system.debug(sdgresults.size());
-        List<AuraFieldSelectOption> fieldresults = sdgDesigner.GetSObjectFields('SDG_Field__c', '');
+        List<AuraFieldSelectOption> smdgresults = smdgDesigner.GetSObjectFields('smdg__c', '');
+        //system.debug(smdgresults.size());
+        List<AuraFieldSelectOption> fieldresults = smdgDesigner.GetSObjectFields('smdg_Field__c', '');
         //system.debug(fieldresults.size());
-        List<AuraFieldSelectOption> sdgbyIDresults = sdgDesigner.GetSObjectFields('', recordId);
-        //system.debug(sdgbyIDresults.size());
-        system.assert(sdgresults.size()>10, 'Expecting multiple fields');
+        List<AuraFieldSelectOption> smdgbyIDresults = smdgDesigner.GetSObjectFields('', recordId);
+        //system.debug(smdgbyIDresults.size());
+        system.assert(smdgresults.size()>10, 'Expecting multiple fields');
         system.assert(fieldresults.size()>10, 'Expecting multiple sObjectTypes');
 
-        //test data has a sObjectName of sdg_field__c
-        system.assertEquals(fieldresults.size(), sdgbyIDresults.size(), 'Expecting same data from both object name and id');
+        //test data has a sObjectName of smdg_field__c
+        system.assertEquals(fieldresults.size(), smdgbyIDresults.size(), 'Expecting same data from both object name and id');
 
         test.stopTest();
     }

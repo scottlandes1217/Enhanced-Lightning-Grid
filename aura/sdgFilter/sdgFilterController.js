@@ -1,8 +1,8 @@
 ({
     doInit: function (component, event, helper) {
-        var FieldType = component.get("v.SDGField").FieldType;
+        var FieldType = component.get("v.smdgField").FieldType;
 
-        var pref = component.get("v.SDGField").Preferences;
+        var pref = component.get("v.smdgField").Preferences;
         //suppress any exceptions during preference setting:
         try {
             if (pref != null) {

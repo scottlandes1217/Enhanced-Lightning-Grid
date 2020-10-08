@@ -4,7 +4,7 @@ Copyright © Felix Lindsay 21 November 2017
 flindsay@gmail.com
 All rights reserved
 */
-public class sdgNamespaceUtility {
+public class smdgNamespaceUtility {
     //Self referential finds the current namespace
     private static string namespace = '';
     private static boolean isloaded = false;
@@ -12,7 +12,7 @@ public class sdgNamespaceUtility {
     {
         if (!isloaded)
         {
-            ApexClass ac = [SELECT Id, NamespacePrefix,name FROM ApexClass where name = 'sdgNamespaceUtility' limit 1];
+            ApexClass ac = [SELECT Id, NamespacePrefix,name FROM ApexClass where name = 'smdgNamespaceUtility' limit 1];
             if (ac!=null)
             {
                 if (String.isNotBlank(ac.NamespacePrefix))

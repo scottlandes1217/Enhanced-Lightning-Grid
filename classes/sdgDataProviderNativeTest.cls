@@ -5,26 +5,26 @@ flindsay@gmail.com
 All rights reserved
 */
 @isTest
-public class sdgDataProviderNativeTest {
+public class smdgDataProviderNativeTest {
 
     private static testmethod void isSelectableTest()
     {
-        system.assertequals(false, sdgDataProviderNative.isUserSelectable(), 'sdgDataProviderNativeTest:isUserSelectable Should not be userSelectable');
+        system.assertequals(false, smdgDataProviderNative.isUserSelectable(), 'smdgDataProviderNativeTest:isUserSelectable Should not be userSelectable');
 
     }
 
     private static testmethod void testNoFields()
     {
         string testtag = 'a string';
-		String sdgID = sdgTestData.GenerateCoreSDG(testtag);
+		String smdgID = smdgTestData.GenerateCoresmdg(testtag);
         boolean iserror = false;
         boolean isexpectederror = false;
         try
         {
-            sdgDataProviderNative dp = new sdgDataProviderNative();
-        	SDG newsdg = dp.LoadSDG(sdgDataProviderType.CustomObject.name() + ':' + testtag,'');
+            smdgDataProviderNative dp = new smdgDataProviderNative();
+        	smdg newsmdg = dp.Loadsmdg(smdgDataProviderType.CustomObject.name() + ':' + testtag,'');
         }
-        catch( SDGException sdgex)
+        catch( smdgException smdgex)
         {
             isexpectederror = true;
         }
@@ -34,8 +34,8 @@ public class sdgDataProviderNativeTest {
             system.debug(ex.getStackTraceString());
             iserror = true;
         }
-        system.assertequals(false, iserror, 'sdgDataProviderNativeTest:testNoFields Should not throw unhandled exception');
-        system.assertequals(true, isExpectedError, 'sdgDataProviderNativeTest:testNoFields Should throw with no fields');
+        system.assertequals(false, iserror, 'smdgDataProviderNativeTest:testNoFields Should not throw unhandled exception');
+        system.assertequals(true, isExpectedError, 'smdgDataProviderNativeTest:testNoFields Should throw with no fields');
 
     }
 }

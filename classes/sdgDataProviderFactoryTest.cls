@@ -5,25 +5,25 @@ flindsay@gmail.com
 All rights reserved
 */
 @isTest
-public class sdgDataProviderFactoryTest {
+public class smdgDataProviderFactoryTest {
 
     static testMethod void checkDeprecatedDataProviders()
     {
         Boolean isError = false;
         try{
-            SDG s = new sdg();
+            smdg s = new smdg();
             CustomDataProviderExample cdpe = new CustomDataProviderExample();
-            cdpe.LoadSDG(s);
-            sdgRelationshipDataProvider rdp = new sdgRelationshipDataProvider();
-            rdp.LoadSDG(s);
-            sdgMetadataDataProvider mdp = new sdgMetadataDataProvider();
-            mdp.LoadSDG(s);
+            cdpe.Loadsmdg(s);
+            smdgRelationshipDataProvider rdp = new smdgRelationshipDataProvider();
+            rdp.Loadsmdg(s);
+            smdgMetadataDataProvider mdp = new smdgMetadataDataProvider();
+            mdp.Loadsmdg(s);
  
         }
         catch(Exception ex)
         {
             isError = true;
-            system.assertEquals(true, isError, 'sdgDataProviderFactoryTest:checkDeprecatedDataProviders');
+            system.assertEquals(true, isError, 'smdgDataProviderFactoryTest:checkDeprecatedDataProviders');
         }
     }
     static testMethod void getClassNameTestInvalid()
@@ -33,9 +33,9 @@ public class sdgDataProviderFactoryTest {
         Boolean isBadError = false;
         try
         {
-        Boolean result3 = sdgDataProviderFactory.isNameValid('something else entirely');
+        Boolean result3 = smdgDataProviderFactory.isNameValid('something else entirely');
         }
-        catch (sdgDataProviderFactory.sdgInvalidConfigurationNameException sdgex)
+        catch (smdgDataProviderFactory.smdgInvalidConfigurationNameException smdgex)
         {
             isGoodError = true;
         }
@@ -44,44 +44,44 @@ public class sdgDataProviderFactoryTest {
             isBadError = true;
         }
         Test.stopTest();
-        system.assertEquals(true,isGoodError, 'sdgDataProviderTest:getClassNameTestInvalid: expected handled error');
-        system.assertEquals(false,isBadError, 'sdgDataProviderTest:getClassNameTestInvalid: Did not expect unhandled error');
+        system.assertEquals(true,isGoodError, 'smdgDataProviderTest:getClassNameTestInvalid: expected handled error');
+        system.assertEquals(false,isBadError, 'smdgDataProviderTest:getClassNameTestInvalid: Did not expect unhandled error');
 
     }
     static testMethod void getClassNameTest()
     {
         Test.startTest();
-        Boolean result = sdgDataProviderFactory.isNameValid('apex:testing');
-        Boolean result2 = sdgDataProviderFactory.isNameValid('aPEx:sdgDataProviderApexExample');
+        Boolean result = smdgDataProviderFactory.isNameValid('apex:testing');
+        Boolean result2 = smdgDataProviderFactory.isNameValid('aPEx:smdgDataProviderApexExample');
 
-        Boolean result4 = sdgDataProviderFactory.isNameValid('Relationship:bob');
-        Boolean result5 = sdgDataProviderFactory.isNameValid('Metadata:whatever');
+        Boolean result4 = smdgDataProviderFactory.isNameValid('Relationship:bob');
+        Boolean result5 = smdgDataProviderFactory.isNameValid('Metadata:whatever');
 
         Test.stopTest();
-        system.assertEquals(true, result, 'sdgDataProviderFactoryTest:isNameValid Expected to be identified as false: invalid apex name');
-        system.assertEquals(true, result2, 'sdgDataProviderFactoryTest:isNameValid Expected to be identified as apex class');
-        system.assertEquals(true, result4, 'sdgDataProviderFactoryTest:isNameValid Expected to be identified as relationship');
-        system.assertEquals(true, result5, 'sdgDataProviderFactoryTest:isNameValid Expected to be identified as metadata provider');
+        system.assertEquals(true, result, 'smdgDataProviderFactoryTest:isNameValid Expected to be identified as false: invalid apex name');
+        system.assertEquals(true, result2, 'smdgDataProviderFactoryTest:isNameValid Expected to be identified as apex class');
+        system.assertEquals(true, result4, 'smdgDataProviderFactoryTest:isNameValid Expected to be identified as relationship');
+        system.assertEquals(true, result5, 'smdgDataProviderFactoryTest:isNameValid Expected to be identified as metadata provider');
 
     }
 
     static testMethod void getClassTest()
     {
         Test.startTest();
-        sdgIDataProvider result =  sdgDataProviderFactory.getClass('metadata:abc');
+        smdgIDataProvider result =  smdgDataProviderFactory.getClass('metadata:abc');
         system.debug('result1 OK');
-        sdgIDataProvider result2 = sdgDataProviderFactory.getClass('aPEx:sdgDataProviderApexExample');
+        smdgIDataProvider result2 = smdgDataProviderFactory.getClass('aPEx:smdgDataProviderApexExample');
         system.debug('result2 OK');
-        sdgIDataProvider result3 = sdgDataProviderFactory.getClass('relationship:Accounts');
+        smdgIDataProvider result3 = smdgDataProviderFactory.getClass('relationship:Accounts');
         system.debug('result3 OK');
-        sdgIDataProvider result4 = sdgDataProviderFactory.getClass('CustomObject:Account');
+        smdgIDataProvider result4 = smdgDataProviderFactory.getClass('CustomObject:Account');
         system.debug('result4 OK');
         Test.stopTest();
-        system.assertEquals(true, result instanceof sdgDataProviderMetadata, 'sdgDataProviderFactoryTest:getClass Expected to get sdgDataProviderMetadata  name');
-        system.assertEquals(false, result instanceof SDGDataProviderRelationship, 'sdgDataProviderFactoryTest:getClass Expected to not get SDGDataProviderRelationship');
-        system.assertEquals(true, result2 instanceof SDGDataProviderApexExample, 'sdgDataProviderFactoryTest:getClass Expected to get SDGDataProviderApexExample apex name');
-        system.assertEquals(true, result3 instanceof SDGDataProviderRelationship, 'sdgDataProviderFactoryTest:getClass Expected to be identified as SDGDataProviderRelationship');
-        system.assertEquals(true, result4 instanceof SDGDataProviderNative, 'sdgDataProviderFactoryTest:getClass Expected to be identified as SDGDataProviderNative');
+        system.assertEquals(true, result instanceof smdgDataProviderMetadata, 'smdgDataProviderFactoryTest:getClass Expected to get smdgDataProviderMetadata  name');
+        system.assertEquals(false, result instanceof smdgDataProviderRelationship, 'smdgDataProviderFactoryTest:getClass Expected to not get smdgDataProviderRelationship');
+        system.assertEquals(true, result2 instanceof smdgDataProviderApexExample, 'smdgDataProviderFactoryTest:getClass Expected to get smdgDataProviderApexExample apex name');
+        system.assertEquals(true, result3 instanceof smdgDataProviderRelationship, 'smdgDataProviderFactoryTest:getClass Expected to be identified as smdgDataProviderRelationship');
+        system.assertEquals(true, result4 instanceof smdgDataProviderNative, 'smdgDataProviderFactoryTest:getClass Expected to be identified as smdgDataProviderNative');
     }
 
     static testMethod void getClassInvalidTest()
@@ -90,32 +90,32 @@ public class sdgDataProviderFactoryTest {
         Boolean hasError = false;
         try
         {
-            sdgIDataProvider result = sdgDataProviderFactory.getClass('apex:testing');
+            smdgIDataProvider result = smdgDataProviderFactory.getClass('apex:testing');
         }
         catch (exception ex)
         {
             hasError = true;
         }
         Test.stopTest();
-        system.assertEquals(true, hasError , 'sdgDataProviderFactoryTest:getClassInvalid Expected error as invalid apex class name');
+        system.assertEquals(true, hasError , 'smdgDataProviderFactoryTest:getClassInvalid Expected error as invalid apex class name');
 
     }
     static testMethod void getClassInvalid2Test()
     {
         Test.startTest();
         Boolean hasError = false;
-        sdgIDataProvider result;
+        smdgIDataProvider result;
         try
         {
-             result = sdgDataProviderFactory.getClass('CustomObject:zip');
+             result = smdgDataProviderFactory.getClass('CustomObject:zip');
         }
         catch (exception ex)
         {
             hasError = true;
         }
         Test.stopTest();
-        system.assertEquals(false, hasError , 'sdgDataProviderFactoryTest:getClassInvalid2 Expected no error despite invalid sobject name');
-        system.assertEquals(true, result instanceof SDGDataProviderNative, 'sdgDataProviderFactoryTest:getClass Expected to be identified as SDGDataProviderNative even though invalid sobjectname');
+        system.assertEquals(false, hasError , 'smdgDataProviderFactoryTest:getClassInvalid2 Expected no error despite invalid sobject name');
+        system.assertEquals(true, result instanceof smdgDataProviderNative, 'smdgDataProviderFactoryTest:getClass Expected to be identified as smdgDataProviderNative even though invalid sobjectname');
 
     }
 }

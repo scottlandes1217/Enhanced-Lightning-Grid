@@ -4,29 +4,29 @@ Copyright © Felix Lindsay 21 November 2017
 flindsay@gmail.com
 All rights reserved
 */
-global class sdgProperties  extends VisualEditor.DynamicPickList{
+global class smdgProperties  extends VisualEditor.DynamicPickList{
     public static final string DefaultLabel = '--Select--';
     private  VisualEditor.DynamicPickListRows getDataRows()
     {
-        List<SDG__c> sdgs = [select id, sdg_tag__c from sdg__c order by sdg_tag__c];
+        List<smdg__c> smdgs = [select id, smdg_tag__c from smdg__c order by smdg_tag__c];
         VisualEditor.DynamicPickListRows  Values = new VisualEditor.DynamicPickListRows();
         set<String> existing = new set<string>();
         values.addrow(new VisualEditor.DataRow(DefaultLabel,null));
-        values.addrow(new VisualEditor.DataRow(sdgDataProviderType.Relationship.name(),sdgDataProviderType.Relationship.name()));
-        for (SDG__c sdg: sdgs)
+        values.addrow(new VisualEditor.DataRow(smdgDataProviderType.Relationship.name(),smdgDataProviderType.Relationship.name()));
+        for (smdg__c smdg: smdgs)
         {
-            values.addrow(new VisualEditor.DataRow(sdgDataProviderType.CustomObject.name() + ':' + sdg.sdg_tag__c, sdgDataProviderType.CustomObject.name() + ':' + sdg.sdg_tag__c));
-            existing.add(sdg.sdg_tag__c);
+            values.addrow(new VisualEditor.DataRow(smdgDataProviderType.CustomObject.name() + ':' + smdg.smdg_tag__c, smdgDataProviderType.CustomObject.name() + ':' + smdg.smdg_tag__c));
+            existing.add(smdg.smdg_tag__c);
         }
 
-        for (SDGDefaults__mdt d:  [SELECT MasterLabel, DeveloperName FROM SDGDefaults__mdt])
+        for (smdgDefaults__mdt d:  [SELECT MasterLabel, DeveloperName FROM smdgDefaults__mdt])
         {
-            values.addrow(new VisualEditor.DataRow(sdgDataProviderType.Metadata.name() + ':' + d.MasterLabel, sdgDataProviderType.Metadata.name() + ':' + d.DeveloperName));
+            values.addrow(new VisualEditor.DataRow(smdgDataProviderType.Metadata.name() + ':' + d.MasterLabel, smdgDataProviderType.Metadata.name() + ':' + d.DeveloperName));
         }
         List<String> custominterfaces = InterfaceImplementors();
         for(String s: custominterfaces)
         {
-             values.addrow(new VisualEditor.DataRow(sdgDataProviderType.Apex.name() + ':' + s, sdgDataProviderType.Apex.name() + ':' + s));
+             values.addrow(new VisualEditor.DataRow(smdgDataProviderType.Apex.name() + ':' + s, smdgDataProviderType.Apex.name() + ':' + s));
 
         }
 
@@ -50,7 +50,7 @@ global class sdgProperties  extends VisualEditor.DynamicPickList{
 
     private List<String> InterfaceImplementors()
     {
-        String interfacename = 'sdgIDataProvider';
+        String interfacename = 'smdgIDataProvider';
     	List<ApexClass> classes = SearchClasses(interfacename);
 
         List<String> dataproviders = new List<String>();
@@ -62,9 +62,9 @@ global class sdgProperties  extends VisualEditor.DynamicPickList{
                     if (ac.Name.toLowerCase() != interfacename.ToLowerCase())
                     {
                         Object o = Type.forName(ac.Name).newInstance();
-                        if (o instanceOf sdgIDataProvider)
+                        if (o instanceOf smdgIDataProvider)
                         {
-                            sdgIDataProvider dp = (sdgIDataProvider)o;
+                            smdgIDataProvider dp = (smdgIDataProvider)o;
                             if ( dp.isUserSelectable())
                             {
                                 dataproviders.add( ac.name);
@@ -75,7 +75,7 @@ global class sdgProperties  extends VisualEditor.DynamicPickList{
         }
         catch (Exception ex) {
             //Ignore this - I don't  know how to recover this:
-            system.debug(LoggingLevel.ERROR, 'Unable to parse custom interfaces: sdgProperties.InterfaceImplementors');
+            system.debug(LoggingLevel.ERROR, 'Unable to parse custom interfaces: smdgProperties.InterfaceImplementors');
         }
         return dataproviders;
 

@@ -1,5 +1,5 @@
 <aura:component >
-    <aura:attribute name="SDGField" type="object" />
+    <aura:attribute name="smdgField" type="object" />
     <aura:attribute name="SortOrder" type="String" default="A" />
     <aura:attribute name="isSorted" type="Boolean" default="False" />
     <aura:attribute name="isSortedA" type="Boolean" default="False" />
@@ -10,13 +10,13 @@
     <aura:handler name="change" value="{!v.CurrentSortedColumn}" action="{!c.sortchanged}" />
     <aura:handler name="change" value="{!v.CurrentSortedOrder}" action="{!c.sortchanged}" />
 
-    <aura:registerEvent name="SDGSortableColumnSort" type="c:sdgSortableColumnSort" />
-    <aura:renderIf isTrue="{!v.SDGField.canSort}">
+    <aura:registerEvent name="smdgSortableColumnSort" type="c:smdgSortableColumnSort" />
+    <aura:renderIf isTrue="{!v.smdgField.canSort}">
 
-        <th class="slds-is-sortable sdgcol" scope="col" onclick="{!c.sort}">
-            <div class="sdgcolheader">
-                <div class="sortcol hidden">{!v.SDGField.ID}</div>
-                <span class="slds-truncate slds-text-link_reset">{!v.SDGField.Label}
+        <th class="slds-is-sortable smdgcol" scope="col" onclick="{!c.sort}">
+            <div class="smdgcolheader">
+                <div class="sortcol hidden">{!v.smdgField.ID}</div>
+                <span class="slds-truncate slds-text-link_reset">{!v.smdgField.Label}
                     <aura:renderIf isTrue="{!v.isSortedA}">
                         <lightning:icon aura:id="arrowup" iconName="utility:arrowup" size="xx-small" />
 
@@ -30,8 +30,8 @@
             </div>
         </th>
         <aura:set attribute="else">
-            <th scope="col" class="sdgcol slds-p-around_x-small ">
-                <span class="slds-truncate">{!v.SDGField.Label}
+            <th scope="col" class="smdgcol slds-p-around_x-small ">
+                <span class="slds-truncate">{!v.smdgField.Label}
                 </span>
             </th>
         </aura:set>
