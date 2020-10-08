@@ -4,6 +4,6 @@
     <formFactors>Large</formFactors>
     <isNavAutoTempTabsDisabled>false</isNavAutoTempTabsDisabled>
     <isNavPersonalizationDisabled>false</isNavPersonalizationDisabled>
-    <label>Sortable Data Grids</label>
+    <label>Enhanced Lightning Grid</label>
     <tabs>SDG__c</tabs>
 </CustomApplication>
