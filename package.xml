@@ -68,7 +68,7 @@
         <developerEntityId>00B58000004ZiQx</developerEntityId>
         <developerName>SDG__c.All</developerName>
     </idMappings>
-    <namespacePrefix>advancedlightninggrid</namespacePrefix>
+    <namespacePrefix>smartgrid</namespacePrefix>
     <orgFeaturePayloads>
         <dependencyDetectionType>A</dependencyDetectionType>
         <feature>Workflow</feature>
